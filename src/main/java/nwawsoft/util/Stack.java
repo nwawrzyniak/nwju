@@ -75,6 +75,14 @@ public class Stack {
         }
     }
 
+    /**
+     * Wrapper for popAndTop() in case you mixed up the name.
+     *
+     * @return same as popAndTop().
+     */
+    public Object TopAndPop() {
+        return popAndTop();
+    }
 
     // Node
     private class Node {
