@@ -41,7 +41,7 @@ public class Stack {
      * Falls der Stapel leer ist, bleibt er unveraendert.
      */
     public void pop() {
-        if (!isEmpty())
+        if (!this.isEmpty())
             head = head.getNext();
     }
 
@@ -58,6 +58,23 @@ public class Stack {
         else
             return null;
     }
+
+    /**
+     * Pops the last object from the stack and returns it.
+     *
+     * @return the latest object from the stack
+     */
+    public Object popAndTop() {
+        if (!this.isEmpty()) {
+            Object temp = head.getContent();
+            pop();
+            return temp;
+        }
+        else {
+            return null;
+        }
+    }
+
 
     // Node
     private class Node {

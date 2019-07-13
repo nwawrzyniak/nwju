@@ -42,7 +42,7 @@ public class List {
      * Objekt gibt und dieses nicht das letzte Objekt der
      * Liste ist, wird das dem aktuellen Objekt in der Liste
      * folgende Objekt zum aktuellen Objekt, andernfalls gibt
-     * es nach Ausf�hrung des Auftrags kein aktuelles Objekt,
+     * es nach Ausfuehrung des Auftrags kein aktuelles Objekt,
      * d.h. hasAccess() liefert den Wert false.
      */
     public void next() {
@@ -164,7 +164,7 @@ public class List {
     /**
      * Wenn es ein aktuellers Objekt gibt wird das vorherige Objekt
      * zum aktuellen Objekt. Wenn das erste Objekt der Liste aktuelles
-     * Objekt ist ver�ndert sich das aktuelle Objekt nicht.
+     * Objekt ist veraendert sich das aktuelle Objekt nicht.
      */
     public void previous() {
         Node lFront, lPos;
@@ -264,6 +264,22 @@ public class List {
         }
         this.toFirst();
         return amount;
+    }
+
+    /**
+     * Inverts the list. The new first object becomes current object.
+     */
+    public void reverse() {
+        Stack temp = new Stack();
+        this.toFirst();
+        while (!this.isEmpty()) {
+            temp.push(this.getObject());
+            this.remove();
+        }
+        while (!temp.isEmpty()) {
+            this.append(temp.top());
+            temp.pop();
+        }
     }
 
     // Node
