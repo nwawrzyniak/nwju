@@ -23,8 +23,13 @@ public class StringArrayFunctions {
     }
 
     public static void printStringArray(String[] strings) {
-        for (int i = 0; i < strings.length; i++) {
-            System.out.println(strings[i]);
+        if (strings != null) {
+            for (int i = 0; i < strings.length; i++) {
+                System.out.println(strings[i]);
+            }
+        }
+        else {
+            DebugPrinter.dp("trying to print an uninitialized array.");
         }
     }
 }
