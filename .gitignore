@@ -5,6 +5,10 @@
 ## START OF PERSONAL SPACE
 .idea/
 material/
+out/
+target/
+thinkspace/
+*.iml
 ## END OF PERSONAL SPACE
 
 ### Eclipse ###
