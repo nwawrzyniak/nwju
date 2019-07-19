@@ -92,7 +92,7 @@ public class StringFunctions {
     }
 
     /**
-     * Checks wether only Characters from 'A' to 'Z' appear in a the String.
+     * Checks whether only Characters from 'A' to 'Z' appear in a the String.
      *
      * @param string the String to check
      * @return true if no other Character than upper case a to z is found
@@ -110,10 +110,25 @@ public class StringFunctions {
     }
 
     /**
-     * Checks whether a String only contains [a-z] and '_'
+     * Checks whether
+     * @param pInput
+     * @return
+     */
+    public boolean isOnlyUpperCase(String pInput) {
+        char[] inputChars = pInput.toCharArray();
+        for (int i = 0; i < inputChars.length; i++) {
+            if (!Character.isUpperCase(inputChars[i])) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * Checks whether a String only contains ['a'-'z'] and '_'.
      *
-     * @param string the String to check
-     * @return true if only allowed Characters appear in the String
+     * @param string the String to check.
+     * @return true if only allowed Characters (ASCII 0x61 to 0x7A and 0x5F) appear in the String.
      */
     public static boolean isNormalized(String string) {
         for (int i = 0; i < string.length(); i++) {
