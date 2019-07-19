@@ -220,7 +220,7 @@ public class List {
     /**
      * Falls es ein aktuelles Objekt gibt (hasAccess() == true),
      * wird das aktuelle Objekt geloescht und das Objekt hinter
-     * dem gelaeschten Objekt wird zum aktuellen Objekt. Wird das
+     * dem geloeschten Objekt wird zum aktuellen Objekt. Wird das
      * Objekt, das am Ende der Liste steht, geloescht, gibt es kein
      * aktuelles Objekt mehr (hasAccess() == false). Wenn die Liste
      * leer ist oder es kein aktuelles Objekt gibt (hasAccess() == false),
@@ -280,6 +280,26 @@ public class List {
             this.append(temp.top());
             temp.pop();
         }
+    }
+
+    /**
+     * Sets the access pointer to the start of the list and return whether its contents are objects of the specified
+     * class or null only.
+     *
+     * @param c an object of the Class to check the List's content objects against.
+     * @return true if all objects are either the specified type or empty, false if an element got a different type.
+     */
+    public boolean isType(Class c) {
+        this.toFirst();
+        while (this.hasAccess()) {
+            if (this.getObject() == null || c.isInstance(this.getObject())) {
+                this.next();
+            } else {
+                return false;
+            }
+        }
+        this.toFirst();
+        return true;
     }
 
     // Node
