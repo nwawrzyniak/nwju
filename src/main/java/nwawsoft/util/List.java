@@ -283,11 +283,11 @@ public class List {
     }
 
     /**
-     * Sets the access pointer to the start of the list and return whether its contents are objects of the specified
+     * Sets the access pointer to the start of the list and returns whether its contents are objects of the specified
      * class or null only.
      *
      * @param c an object of the Class to check the List's content objects against.
-     * @return true if all objects are either the specified type or empty, false if an element got a different type.
+     * @return true if all objects are either the specified type or empty, false if any element got a different type.
      */
     public boolean isType(Class c) {
         this.toFirst();
