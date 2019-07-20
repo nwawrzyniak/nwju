@@ -44,10 +44,11 @@ public class BinaryTree extends Tree {
     }
 
     /**
-     * WHY WOULD YOU WANT TO CREATE A BINARY TREE FROM A LIST?! *sigh* there you go...
+     * Takes the first two objects of treeList and makes them leftTree and rightTree, respectively.
+     * Exists only because the normal Tree can be created with a child list as well.
      *
      * @param treeList a list of Tree objects.
-     * @deprecated why would anyone want this?
+     * @deprecated Why would anyone want to create a BinaryTree from a List?! Just use any other constructor.
      */
     @Deprecated
     public BinaryTree(List treeList) {
