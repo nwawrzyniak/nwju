@@ -64,6 +64,8 @@ public class StringList extends List {
             while (pList.hasAccess()) {
                 if (pList.getObject() instanceof String) {
                     this.append(pList.getObject());
+                } else {
+                    DebugPrinter.dp(this, "This is not a String. It is " + pList.getObject() + ". Ignored.");
                 }
                 next();
             }
