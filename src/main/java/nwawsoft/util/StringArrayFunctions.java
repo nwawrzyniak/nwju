@@ -13,7 +13,7 @@ public class StringArrayFunctions {
      * @param pattern the exact String to look for.
      * @return true if any element of []strings is equal to pattern. Else false.
      */
-    public static boolean contains(String[] strings, String pattern) {
+    public static boolean contains(final String[] strings, final String pattern) {
         if (strings != null && pattern != null) {
             for (String string : strings) {
                 if (string.equals(pattern)) {
@@ -29,7 +29,7 @@ public class StringArrayFunctions {
      *
      * @param strings the String array to print.
      */
-    public static void printStringArray(String[] strings) {
+    public static void printStringArray(final String[] strings) {
         if (strings != null) {
             for (String string : strings) {
                 System.out.println(string);
