@@ -1,20 +1,22 @@
 package nwawsoft.util;
 
 /**
- * Created by Ernst on 22.06.2017.
+ * Supplies functions that manipulate or work with information from String arrays.
  */
 public class StringArrayFunctions {
     /**
      * Checks whether a String array contains an exact String as an element.
      *
-     * @param strings the array to look for the pattern in
-     * @param pattern the pattern to look for
-     * @return true if any element of strings is equal to pattern. Else false.
+     * Probably deprecated? There should be such a thing in the main Java library nowadays.
+     *
+     * @param strings the array to search through.
+     * @param pattern the exact String to look for.
+     * @return true if any element of []strings is equal to pattern. Else false.
      */
-    public static boolean contains(String[] strings, String pattern) {
+    public static boolean contains(final String[] strings, final String pattern) {
         if (strings != null && pattern != null) {
-            for (int i = 0; i < strings.length; i++) {
-                if (strings[i].equals(pattern)) {
+            for (String string : strings) {
+                if (string.equals(pattern)) {
                     return true;
                 }
             }
@@ -22,10 +24,15 @@ public class StringArrayFunctions {
         return false;
     }
 
-    public static void printStringArray(String[] strings) {
+    /**
+     * Prints an array of Strings, one line each.
+     *
+     * @param strings the String array to print.
+     */
+    public static void printStringArray(final String[] strings) {
         if (strings != null) {
-            for (int i = 0; i < strings.length; i++) {
-                System.out.println(strings[i]);
+            for (String string : strings) {
+                System.out.println(string);
             }
         }
         else {
