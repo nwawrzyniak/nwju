@@ -1,5 +1,11 @@
 package nwawsoft.util;
 
+/**
+ * Provided functions to create a new Array of any type with a new size.
+ * This can bypass the static size of arrays in Java.
+ * However, you should really never do this.
+ * Using any of this functions means you should have taken a different data structure in the first place.
+ */
 public class ArrayFunctions
 {
   public ArrayFunctions()
@@ -9,14 +15,14 @@ public class ArrayFunctions
   
   /**
    * Returns an Object-Array with the size of the old Array + an Integer.
-It contains as much of the old Array's content as possible.
+   * It contains as much of the old Array's content as possible.
    */
   public Object[] expandArray(Object[] oldArray, int additions)
   {
     int oldSize = oldArray.length;
     int newSize = oldSize + additions;
     Object[] biggerArray = new Object[newSize];
-    for (int i=0; i<oldSize; i++)
+    for (int i = 0; i < oldSize; i++)
     {
       biggerArray[i] = oldArray[i];
     }
@@ -25,14 +31,14 @@ It contains as much of the old Array's content as possible.
   
   /**
    * Returns an Object-Array with the size of the old Array - an Integer.
-It contains as much of the old Array's content as possible.
+   * It contains as much of the old Array's content as possible.
    */
   public Object[] reduceArray(Object[] oldArray, int subtractions)
   {
     int oldSize = oldArray.length;
     int newSize = oldSize-subtractions;
     Object[] smallerArray = new Object[newSize];
-    for (int i=0; i<newSize; i++)
+    for (int i = 0; i < newSize; i++)
     {
       smallerArray[i] = oldArray[i];
     }
@@ -41,14 +47,14 @@ It contains as much of the old Array's content as possible.
   
   /**
    * Returns an Object-Array with the size of the old Array - 1.
-It contains all information of the old Array's except the first content gets deleted.
-All contents move one position more to the beginning of the Array.
+   * It contains all information of the old Array's except the first content gets deleted.
+   * All contents move one position more to the beginning of the Array.
    */
   public Object[] deleteFirst(Object[] oldArray)
   {
     int oldSize = oldArray.length;
     Object[] smallerArray = new Object[oldSize-1];
-    for (int i=0; i < oldSize-1; i++)
+    for (int i = 0; i < oldSize-1; i++)
     {
       smallerArray[i] = oldArray[i+1];
     }
@@ -57,7 +63,7 @@ All contents move one position more to the beginning of the Array.
   
   /**
    * Returns an Object-Array with the specified size.
-It contains as much of the old Array's content as possible.
+   * It contains as much of the old Array's content as possible.
    */
   public Object[] changeArraySize(Object[] oldArray, int newSize)
   {
@@ -65,21 +71,21 @@ It contains as much of the old Array's content as possible.
     Object[] newArray = new Object[newSize];
     if (newSize > oldSize)
     {
-      for (int i=0; i<oldSize; i++)
+      for (int i=0; i < oldSize; i++)
       {
         newArray[i] = oldArray[i];
       }
     }
     if (newSize < oldSize)
     {
-      for (int i=0; i<newSize; i++)
+      for (int i = 0; i < newSize; i++)
       {
         newArray[i] = oldArray[i];
       }
     }
     if (newSize == oldSize)
     {
-      for (int i=0; i<newSize; i++)
+      for (int i = 0; i < newSize; i++)
       {
         newArray[i] = oldArray[i];
       }
