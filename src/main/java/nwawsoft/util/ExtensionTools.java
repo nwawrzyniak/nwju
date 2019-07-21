@@ -6,7 +6,6 @@ import java.io.File;
  * Provides functions to work with file extensions.
  */
 public class ExtensionTools {
-
     /**
      * Returns the file extension of a specified File as a String (without the leading '.').
      * If there is no file extension an empty String is returned.

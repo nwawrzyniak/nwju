@@ -3,8 +3,7 @@ package nwawsoft.util;
 /**
  * Supplies functions for manipulating and working with tha native data type 'char'.
  */
-public class CharFunctions
-{
+public class CharFunctions {
   /**
    * Checks whether a specified character is either a digit from 0 to 9 or a '.' or ','.
    *
