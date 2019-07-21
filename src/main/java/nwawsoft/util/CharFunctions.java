@@ -1,21 +1,18 @@
 package nwawsoft.util;
 
+/**
+ * Supplies functions for manipulating and working with tha native data type 'char'.
+ */
 public class CharFunctions
 {
-  public CharFunctions()
+  /**
+   * Checks whether a specified character is either a digit from 0 to 9 or a '.' or ','.
+   *
+   * @param c a char to check.
+   * @return true if c is a digit, dot or commma. Else false.
+   */
+  public static boolean isNumeric(final char c)
   {
-    
-  }
-  
-  public boolean isNumeric(char pInput)
-  {
-    if (((int)pInput >= 48 && (int)pInput <=57) || (int)pInput == 44 || (int)pInput == 46)
-    {
-      return true;
-    }
-    else
-    {
-      return false;
-    }
+    return ((int) c >= 48 && (int) c <= 57) || (int) c == 44 || (int) c == 46;
   }
 }
