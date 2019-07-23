@@ -14,29 +14,31 @@ public class Tree {
      */
     public Tree() {
         treeList = new List();
+        content = null;
         subTreeCount = 0;
     }
 
     /**
      * Creates a Tree object that stores a passed List of Tree objects.
      *
-     * @param treeList a List of Tree objects.
+     * @param pTreeList a List of Tree objects.
      */
-    public Tree(List treeList) {
-        if (treeList.isType(this.getClass())) {
-            this.treeList = treeList;
+    public Tree(final List pTreeList) {
+        if (pTreeList.isTypeOrNull(this.getClass())) {
+            this.treeList = pTreeList;
             subTreeCount = treeList.count();
         } else {
-            removeNonTrees(treeList);
+            removeNonTrees(pTreeList);
         }
+        content = null;
     }
 
     /**
-     * Removes all objects that are not from type Tree from treeList.
+     * Removes all objects that are not from type Tree from treeList. Also sets subTreeCount to treeList.count().
      *
      * @param treeList a List of Tree objects with or without non-Tree objects.
      */
-    private void removeNonTrees(List treeList) {
+    private void removeNonTrees(final List treeList) {
         DebugPrinter.dp(this, "Found non-Tree objects in treeList. Removing these now.");
         treeList.toFirst();
         while (treeList.hasAccess()) {
@@ -54,7 +56,7 @@ public class Tree {
      *
      * @param t a Tree object.
      */
-    public void addTree(Tree t) {
+    public void addTree(final Tree t) {
         treeList.append(t);
         subTreeCount++;
     }
@@ -64,7 +66,7 @@ public class Tree {
      *
      * @param index the index of the tree object to delete, starting from 0.
      */
-    public void removeTree(int index) {
+    public void removeTree(final int index) {
         if (subTreeCount > index) {
             goTo(index);
             treeList.remove();
@@ -90,7 +92,7 @@ public class Tree {
      *
      * @param content the content of the Tree object.
      */
-    public void setContent(Object content) {
+    public void setContent(final Object content) {
         this.content = content;
     }
 
@@ -100,7 +102,7 @@ public class Tree {
      * @param index the index of the desired Tree object.
      * @return the Tree object with the specified index.
      */
-    public Tree getTree(int index) {
+    public Tree getTree(final int index) {
         if (treeList.count() > index) {
             goTo(index);
             return (Tree)treeList.getObject();
@@ -118,7 +120,8 @@ public class Tree {
      * between treeList and subTreeCount.
      *
      * @return the List of Tree objects this Tree object contains.
-     * @deprecated this is only for easier testing purposes but may invalidate the integrity of treeList.
+     * @deprecated this is only for easier testing purposes but modifying the internal list via this call may
+     * invalidate the integrity of the synchronization between treeList and subTreeCount.
      */
     @Deprecated
     public List getTrees() {
@@ -131,7 +134,7 @@ public class Tree {
      *
      * @param index the index of the desired Tree object.
      */
-    private void goTo(int index) {
+    private void goTo(final int index) {
         treeList.toFirst();
         for (int i = 0; i < index; i++) {
             treeList.next();

@@ -256,6 +256,8 @@ public class List {
      * @return the amount of elements in the list
      */
     public int count() {
+        /* ToDo: Make this function obsolete by keeping track of the element count at all time and creating two getters
+            named count() [yes, replace THIS method] and getElementAmount() [to conform the standards]. */
         int amount = 0;
         this.toFirst();
         while (this.hasAccess()) {
@@ -289,10 +291,30 @@ public class List {
      * @param c an object of the Class to check the List's content objects against.
      * @return true if all objects are either the specified type or empty, false if any element got a different type.
      */
-    public boolean isType(Class c) {
+    public boolean isTypeOrNull(Class c) {
         this.toFirst();
         while (this.hasAccess()) {
             if (this.getObject() == null || c.isInstance(this.getObject())) {
+                this.next();
+            } else {
+                return false;
+            }
+        }
+        this.toFirst();
+        return true;
+    }
+
+    /**
+     * Sets the access pointer to the start of the list and returns whether all its contents are objects of the
+     * specified class.
+     *
+     * @param c an object of the Class to check the List's content objects against.
+     * @return true if all objects are of the specified type, false if any element got a different type.
+     */
+    public boolean isType(Class c) {
+        this.toFirst();
+        while (this.hasAccess()) {
+            if (c.isInstance(this.getObject())) {
                 this.next();
             } else {
                 return false;
