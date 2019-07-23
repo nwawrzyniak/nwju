@@ -251,7 +251,7 @@ public class List {
     }
 
     /**
-     * Counts the elements in the list. Current object/position gets set to first.
+     * Counts the elements in the list. 'Current' position gets set to first.
      *
      * @return the amount of elements in the list
      */
@@ -302,7 +302,50 @@ public class List {
         return true;
     }
 
-    // Node
+    /**
+     * Checks whether two lists have no entries that fit Object.equals().
+     * Note that this has a run-time of O(a.count()*b.count()).
+     * 'Current' position gets set to first.
+     *
+     * @param a the first List
+     * @param b the second List
+     * @return true if no match was found. Else false.
+     */
+    public static boolean sharesNoEntry(List a, List b) {
+        boolean foundMatch = false;
+        a.toFirst();
+        b.toFirst();
+        while (a.hasAccess()) {
+            while (b.hasAccess()) {
+                if (a.getObject().equals(b.getObject())) {
+                    foundMatch = true;
+                }
+                b.next();
+            }
+            b.toFirst();
+            a.next();
+        }
+        a.toFirst();
+        b.toFirst();
+        return !foundMatch;
+    }
+
+    /**
+     * Checks whether the list has no entry that fits Object.equals() for any object in the specified List.
+     * Note that this has a run-time of O(this.count()*b.count()).
+     * 'Current' position gets set to first.
+     *
+     * @param l the List to compare to
+     * @return true if no match was found. Else false.
+     */
+    public boolean sharesNoEntry(List l) {
+        return sharesNoEntry(this, l);
+    }
+
+    /**
+     * Private class Node.
+     * An object of this class can contain up to one Object and can know up to one Node object.
+     */
     private class Node {
         private Object contentObj;
         private Node nextNode;
@@ -327,7 +370,5 @@ public class List {
         public void setNext(Node pNext) {
             nextNode = pNext;
         }
-
-    } // Ende der Klasse Node
-
+    }
 }
