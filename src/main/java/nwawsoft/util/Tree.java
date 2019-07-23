@@ -19,16 +19,34 @@ public class Tree {
     }
 
     /**
-     * Creates a Tree object that stores a passed List of Tree objects.
+     * Creates a Tree object that stores a passed List of Tree objects. If the List contained non-Tree objects or null 
+     * objects they are filtered out.
      *
-     * @param pTreeList a List of Tree objects.
+     * @param treeList a List of Tree objects.
      */
-    public Tree(final List pTreeList) {
-        if (pTreeList.isTypeOrNull(this.getClass())) {
-            this.treeList = pTreeList;
-            subTreeCount = treeList.count();
+    public Tree(final List treeList) {
+        if (treeList.isType(this.getClass())) {
+            this.treeList = treeList;
+            subTreeCount = this.treeList.count();
         } else {
-            removeNonTrees(pTreeList);
+            removeNonTrees(treeList, false);
+        }
+        content = null;
+    }
+
+    /**
+     * Creates a Tree object that stores a passed List of Tree objects. If the List contained non-Tree object they are
+     * filtered out.
+     *
+     * @param treeList a List of Tree objects.
+     * @param allowNull whether null values shall be kept and take a slot in the list.
+     */
+    public Tree(final List treeList, boolean allowNull) {
+        if (treeList.isTypeOrNull(this.getClass())) {
+            this.treeList = treeList;
+            subTreeCount = this.treeList.count();
+        } else {
+            removeNonTrees(treeList, allowNull);
         }
         content = null;
     }
@@ -38,14 +56,22 @@ public class Tree {
      *
      * @param treeList a List of Tree objects with or without non-Tree objects.
      */
-    private void removeNonTrees(final List treeList) {
+    private void removeNonTrees(final List treeList, boolean allowNull) {
         DebugPrinter.dp(this, "Found non-Tree objects in treeList. Removing these now.");
         treeList.toFirst();
         while (treeList.hasAccess()) {
-            if (treeList.getObject() instanceof Tree) {
-                treeList.next();
+            if (allowNull) {
+                if (treeList.getObject() instanceof Tree || treeList.getObject() == null) {
+                    treeList.next();
+                } else {
+                    treeList.remove();
+                }
             } else {
-                treeList.remove();
+                if (treeList.getObject() instanceof Tree) {
+                    treeList.next();
+                } else {
+                    treeList.remove();
+                }
             }
         }
         subTreeCount = treeList.count();
