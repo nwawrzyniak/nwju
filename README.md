@@ -9,7 +9,7 @@ This is the go-to library to include in any project if you want to start fresh w
 
 ---
 ## Adding this library to your project
-### Method 1) Adding ```nwawsoft-java-util``` as a git submodule:
+### Method 1) Adding ```nwawsoft-java-util``` as a ```git submodule```:
 ```
 git submodule add https://github.com/nwawrzyniak/nwawsoft-java-util lib/nwawsoft-java-util
 ```
@@ -24,16 +24,16 @@ git commit -am "Updated git submodules."
 git push
 ```
 ### Method 2) Adding ```nwawsoft-java-util``` via Maven and ```pom.xml```:
+Add the following two snippets somewhere between the ```<project>``` and ```</project>``` tag of you ```pom.xml```
 ```
-<project>
-...
   <repositories>
     <repository>
       <id>jitpack.io</id>
       <url>https://jitpack.io</url>
     </repository>
   </repositories>
-  
+```
+```
   <dependencies>
     <dependency>
       <groupId>com.github.nwawrzyniak</groupId>
@@ -41,8 +41,6 @@ git push
       <version>master-SNAPSHOT</version> <!-- or some other version if you want a specific one -->
     </dependency>
   </dependencies>
-...
-</project>
 ```
 ### Method 3) Adding ```nwawsoft-java-util``` via ```git subtree```:
 ```git subtree add --prefix lib/nwawsoft-java-util https://github.com/nwawrzyniak/nwawsoft-java-util.git master --squash```
