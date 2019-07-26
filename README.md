@@ -9,6 +9,7 @@ This is the go-to library to include in any project if you want to start fresh w
 
 ---
 ## Adding this library to your project
+There is an entirety of at least 5 ways to include this library in your project. We will breeze through them quickly.
 ### Method 1) Adding ```nwawsoft-java-util``` as a ```git submodule```:
 ```
 git submodule add https://github.com/nwawrzyniak/nwawsoft-java-util lib/nwawsoft-java-util
