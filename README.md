@@ -59,7 +59,7 @@ cd lib/nwawsoft-java-util
 git pull
 ```
 ### Method 5) Downloading the source files manually (no easy updating):
-[Dowload as .zip](https://github.com/nwawrzyniak/nwawsoft-java-util/archive/master.zip)
+[Dowload the source files as a .zip archive](https://github.com/nwawrzyniak/nwawsoft-java-util/archive/master.zip).
 
 It is recommended to put the files in a new subdirectory inside of ```myProjectRoot/lib/```, preferably called ```nwawsoft-java-util``` to never mix up the contents of your lib directory.
 
