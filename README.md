@@ -21,7 +21,7 @@ Do not forget to load the contents of the submodule after cloning, for example w
 
 From time to time its also worth considering updating the library. If you want to update **all** git submodules use 
 
-```git submodule update --recursive --remote``` and ```git push```.
+```git submodule update --recursive --remote```, ```git commit -am "Updated git submodules."``` and ```git push```.
 
 Method 2) Adding ```nwawsoft-java-util``` via Maven by adding the following snippets it to your ```pom.xml```:
 
