@@ -46,8 +46,8 @@ Add the following two snippets somewhere between the ```<project>``` and ```</pr
 ```git subtree add --prefix lib/nwawsoft-java-util https://github.com/nwawrzyniak/nwawsoft-java-util.git master --squash```
 In that case, you would update the library like this:
 ```git subtree pull --prefix lib/nwawsoft-java-util https://github.com/nwawrzyniak/nwawsoft-java-util.git master --squash```
-### Method 4) Cloning this repository into myProjectRoot/lib/nwawsoft-java-util:
-Assuming you are in a terminal in your project root, make the following calls
+### Method 4) Cloning into myProjectRoot/lib/nwawsoft-java-util:
+To clone this repository to a smart place in your project structure, assuming you are in a terminal in your project root, make the following calls
 ```
 mkdir lib
 cd lib/
