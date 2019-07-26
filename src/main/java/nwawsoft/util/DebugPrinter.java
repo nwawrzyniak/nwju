@@ -39,7 +39,7 @@ public class DebugPrinter {
      * @param printableString   the String to print.
      * @param lineMode          0 or 1. 0 for line break after print, 1 for no line break.
      */
-    private static void debugPrint(final Object classObject, final String printableString, int lineMode) {
+    private static void debugPrint(final Object classObject, final String printableString, final int lineMode) {
         if (DebugPrinter.DEBUG) {
             String method = classObject.getClass().getDeclaredMethods()[0].toString();
             String methodPath = "";
@@ -90,7 +90,7 @@ public class DebugPrinter {
      * @param printableString   the String to print.
      * @param lineMode          0 or 1. 0 for line break after print, 1 for no line break.
      */
-    private static void debugPrint(final String printableString, int lineMode) {
+    private static void debugPrint(final String printableString, final int lineMode) {
         if (DebugPrinter.DEBUG) {
             if (lineMode == 0) {
                 System.out.println(printableString);
@@ -117,7 +117,7 @@ public class DebugPrinter {
      * @param printableString   the String to print.
      * @param lineMode          0 or 1. 0 for line break after print, 1 for no line break.
      */
-    public static void dp(final Object classObject, final String printableString, int lineMode) {
+    public static void dp(final Object classObject, final String printableString, final int lineMode) {
         debugPrint(classObject, printableString, 0);
     }
 
@@ -136,7 +136,7 @@ public class DebugPrinter {
      * @param printableString   the String to print.
      * @param lineMode          0 or 1. 0 for line break after print, 1 for no line break.
      */
-    public static void dp(final String printableString, int lineMode) {
+    public static void dp(final String printableString, final int lineMode) {
         debugPrint(printableString, lineMode);
     }
 

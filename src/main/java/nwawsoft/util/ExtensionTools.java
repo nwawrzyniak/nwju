@@ -13,7 +13,7 @@ public class ExtensionTools {
      * @param f a File object.
      * @return the file extension of f as a String.
      */
-    public static String getExtension(File f) {
+    public static String getExtension(final File f) {
         String ext = null;
         String s = f.getName();
         if (s.contains(".")) {

@@ -41,7 +41,7 @@ public class Tree {
      * @param treeList a List of Tree objects.
      * @param allowNull whether null values shall be kept and take a slot in the list.
      */
-    public Tree(final List treeList, boolean allowNull) {
+    public Tree(final List treeList, final boolean allowNull) {
         if (treeList.isTypeOrNull(this.getClass())) {
             this.treeList = treeList;
             subTreeCount = this.treeList.getLength();
@@ -56,7 +56,7 @@ public class Tree {
      *
      * @param treeList a List of Tree objects with or without non-Tree objects.
      */
-    private void removeNonTrees(final List treeList, boolean allowNull) {
+    private void removeNonTrees(final List treeList, final boolean allowNull) {
         DebugPrinter.dp(this, "Found non-Tree objects in treeList. Removing these now.");
         treeList.toFirst();
         while (treeList.hasAccess()) {

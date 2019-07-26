@@ -24,7 +24,7 @@ public class BinaryTree extends Tree {
      * @param leftTree the Tree object to go in the leftTree storage.
      * @param rightTree the Tree object to go in the rightTree storage.
      */
-    public BinaryTree(Tree leftTree, Tree rightTree) {
+    public BinaryTree(final Tree leftTree, final Tree rightTree) {
         this.leftTree = leftTree;
         this.rightTree = rightTree;
         content = null;
@@ -37,7 +37,7 @@ public class BinaryTree extends Tree {
      * @param rightTree the Tree object to go in the rightTree storage.
      * @param content any object of any type.
      */
-    public BinaryTree(Tree leftTree, Tree rightTree, Object content) {
+    public BinaryTree(final Tree leftTree, final Tree rightTree, final Object content) {
         this.leftTree = leftTree;
         this.rightTree = rightTree;
         this.content = content;
@@ -51,7 +51,7 @@ public class BinaryTree extends Tree {
      * @deprecated Why would anyone want to create a BinaryTree from a List?! Just use any other constructor.
      */
     @Deprecated
-    public BinaryTree(List treeList) {
+    public BinaryTree(final List treeList) {
         if (treeList.getLength() >= 2) {
             treeList.toFirst();
             leftTree = (Tree) treeList.getObject();
@@ -75,7 +75,7 @@ public class BinaryTree extends Tree {
         return leftTree;
     }
 
-    public void setLeftTree(Tree leftTree) {
+    public void setLeftTree(final Tree leftTree) {
         this.leftTree = leftTree;
     }
 
@@ -83,7 +83,7 @@ public class BinaryTree extends Tree {
         return rightTree;
     }
 
-    public void setRightTree(Tree rightTree) {
+    public void setRightTree(final Tree rightTree) {
         this.rightTree = rightTree;
     }
 
@@ -94,7 +94,7 @@ public class BinaryTree extends Tree {
      * @return the Tree object with the specified index.
      */
     @Override
-    public Tree getTree(int index) {
+    public Tree getTree(final int index) {
         if (index == 0) {
             return leftTree;
         } else if (index == 1) {
@@ -122,7 +122,7 @@ public class BinaryTree extends Tree {
      * @param content any object of any type. May be null.
      */
     @Override
-    public void setContent(Object content) {
+    public void setContent(final Object content) {
         this.content = content;
     }
 
@@ -134,7 +134,7 @@ public class BinaryTree extends Tree {
      */
     @Override
     @Deprecated
-    public void addTree(Tree t) {
+    public void addTree(final Tree t) {
         if (leftTree == null) {
             leftTree = t;
         } else if (rightTree == null) {
@@ -152,7 +152,7 @@ public class BinaryTree extends Tree {
      */
     @Override
     @Deprecated
-    public void removeTree(int index) {
+    public void removeTree(final int index) {
         DebugPrinter.dp(this, "This shouldn't be used.");
     }
 
