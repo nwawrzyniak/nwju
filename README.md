@@ -16,9 +16,11 @@ Method 1) Adding ```nwawsoft-java-util``` as a git submodule:
 ```git submodule add https://github.com/nwawrzyniak/nwawsoft-java-util lib/nwawsoft-java-util```
 
 Do not forget to load the contents of the submodule after cloning, for example with 
+
 ```git submodule update --init --recursive```.
 
-From time to time its also worth considering updating the library. This would be done with 
+From time to time its also worth considering updating the library. If you want to update **all** git submodules use 
+
 ```git submodule update --recursive --remote``` and ```git push```.
 
 Method 2) Adding ```nwawsoft-java-util``` via Maven by adding the following snippets it to your ```pom.xml```:
