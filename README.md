@@ -24,7 +24,7 @@ git commit -am "Updated git submodules."
 git push
 ```
 ### Method 2) Adding ```nwawsoft-java-util``` via Maven and ```pom.xml```:
-Add the following two snippets somewhere between the ```<project>``` and ```</project>``` tag of you ```pom.xml```
+Add the following two snippets somewhere between the ```<project>``` and ```</project>``` tag of your ```pom.xml```
 ```
   <repositories>
     <repository>
