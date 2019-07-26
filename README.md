@@ -1,4 +1,4 @@
-# nwawsoft-java-nwawsoft
+# nwawsoft-java-util
 A package with functions and data structures that extend the Java programming language.
 
 Data structures include List, Stack, Queue, Tree, Graph and more.
