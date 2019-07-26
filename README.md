@@ -9,9 +9,8 @@ This is the go-to library to include in any project if you want to start fresh w
 
 ---
 
-To add this library to your project you have a few options:
-
-Method 1) Adding ```nwawsoft-java-util``` as a git submodule:
+## Adding this library to your project
+### Method 1) Adding ```nwawsoft-java-util``` as a git submodule:
 
 ```git submodule add https://github.com/nwawrzyniak/nwawsoft-java-util lib/nwawsoft-java-util```
 
@@ -21,9 +20,13 @@ Do not forget to load the contents of the submodule after cloning, for example w
 
 From time to time its also worth considering updating the library. If you want to update **all** git submodules use 
 
-```git submodule update --recursive --remote```, ```git commit -am "Updated git submodules."``` and ```git push```.
+```
+git submodule update --recursive --remote
+git commit -am "Updated git submodules."
+git push
+```
 
-Method 2) Adding ```nwawsoft-java-util``` via Maven by adding the following snippets it to your ```pom.xml```:
+### Method 2) Adding ```nwawsoft-java-util``` via Maven and ```pom.xml```:
 
 ```
 <project>
@@ -46,10 +49,44 @@ Method 2) Adding ```nwawsoft-java-util``` via Maven by adding the following snip
 </project>
 ```
 
-Method 3) Downloading the source files and putting them somewhere in your project structure. This method will not keep the library up-to-date in case of updates.
+### Method 3) Adding ```nwawsoft-java-util``` via ```git subtree```:
+
+```git subtree add --prefix lib/nwawsoft-java-util https://github.com/nwawrzyniak/nwawsoft-java-util.git master --squash```
+
+In that case, you would update the library like this:
+
+```git subtree pull --prefix lib/nwawsoft-java-util https://github.com/nwawrzyniak/nwawsoft-java-util.git master --squash```
+
+### Method 4) Cloning this repository into myProjectRoot/lib/nwawsoft-java-util:
+
+Assuming you are in a terminal in your project root, make the following calls
+
+```
+mkdir lib
+cd lib/
+git clone https://github.com/nwawrzyniak/nwawsoft-java-util.git
+```
+
+To update the library if it was installed this way use 
+```
+cd lib/nwawsoft-java-util
+git pull
+```
+
+### Method 5) Downloading the source files manually (no easy updating):
+
+[Dowload as .zip](https://github.com/nwawrzyniak/nwawsoft-java-util/archive/master.zip)
+
+It is recommended to put the files in a new subdirectory inside of ```myProjectRoot/lib/```, preferably called ```nwawsoft-java-util``` to never mix up the contents of your lib directory.
+
+To update the library if it was installed this way you have to redownload the current version via the same link and replace all files with the newer ones.
 
 ---
 
+## Improving this library
+
 Requests for functions that are general enough to be included in a standard library are welcome and should be posted as an [Issue](https://github.com/nwawrzyniak/nwawsoft-java-util/issues).
 
-This code mess is a mix of fresh, clean, well-documented code and over 10 year old school project snippets. I do not take any warranty for the usage of this library, though I intend to maintain this library as well as possible. Coding style may vary in quality and comments and documentation may vary in quality and existance, mostly depening on the when the code was written. Currently the library is getting a complete overhaul.
+## Disclaimer
+
+This code mess is a mix of fresh, clean, well-documented code and over 10 year old school project snippets. I do not take any warranty for the usage of this library, though I intend to maintain this library as well as possible. Coding style may vary in quality and comments and documentation may vary in quality and existance, mostly depening on the when the code was written. Currently the library is getting a complete overhaul and I cannot guarantee that everything will stay 100% backwards compatible.
