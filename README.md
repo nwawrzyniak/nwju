@@ -69,5 +69,6 @@ To update the library if it was installed this way you have to redownload the cu
 ## Improving this library
 Requests for functions that are general enough to be included in a standard library are welcome and should be posted as an [Issue](https://github.com/nwawrzyniak/nwawsoft-java-util/issues).
 
+---
 ## Disclaimer
 This code mess is a mix of fresh, clean, well-documented code and over 10 year old school project snippets. I do not take any warranty for the usage of this library, though I intend to maintain this library as well as possible. Coding style may vary in quality and comments and documentation may vary in quality and existance, mostly depening on the when the code was written. Currently the library is getting a complete overhaul and I cannot guarantee that everything will stay 100% backwards compatible.
