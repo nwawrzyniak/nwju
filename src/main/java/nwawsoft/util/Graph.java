@@ -186,9 +186,9 @@ public class Graph {
     }
 
     /**
-     * Alle Knoten des Graphen werden als unmarkiert gekennzeichnet.
+     * Unmarks all GraphNode objects in the Graph.
      */
-    public void resetMarks() {
+    public void unmark() {
         if (!nodeList.isEmpty()) {
             nodeList.toFirst();
             while (nodeList.hasAccess()) {
@@ -246,12 +246,11 @@ public class Graph {
     }
 
     /**
-     * Die Anfrage liefert einen double, der das Gesamtgewicht
-     * aller Knoten im Graphen enthaelt.
+     * Returns the sum of all edeWeights in the Graph.
      *
-     * @return double mit Gesamtgewicht
+     * @return all edgeWeights in the Graph summed up.
      */
-    public double combinedEdges() {
+    public double edgeWeightSum() {
         double combinedWeight = 0;
         List allNodes = getNodes();
         allNodes.toFirst();
@@ -263,11 +262,10 @@ public class Graph {
     }
 
     /**
-     * Die Anfrage liefert das Gesamtgewicht aller Kanten
-     * einer GraphNode.
+     * Returns the added edeWeights of all edges of the specified GraphNode object.
      *
-     * @param pNode Knoten
-     * @return double mit Gesamtgewicht der Kanten.
+     * @param pNode a GraphNode object.
+     * @return the sum of all edeWeights of the GraphNode (and his neighbors).
      */
     public double edgeWeight(GraphNode pNode) {
         double nodeWeight = 0;
@@ -281,22 +279,21 @@ public class Graph {
     }
 
     /**
-     * Die Anfrage liefert den GraphNode, der das h�chste
-     * Kantengewicht aller Knoten im Graphen enthaelt.
+     * Returns the GraphNode object with the highest added edgeWeights in the Graph.
      *
-     * @return GraphNode mit h�chstem Gesamtgewicht
+     * @return the GraphNode with the highest added edgeWeights.
      */
     public GraphNode highestWeight() {
-        GraphNode heavyNode;
+        GraphNode heaviestNode;
         List allNodes = this.getNodes();
         allNodes.toFirst();
-        heavyNode = (GraphNode) allNodes.getObject();
+        heaviestNode = (GraphNode) allNodes.getObject();
         while (allNodes.hasAccess()) {
-            if (edgeWeight(heavyNode) < edgeWeight((GraphNode) allNodes.getObject())) {
-                heavyNode = (GraphNode) allNodes.getObject();
+            if (edgeWeight(heaviestNode) < edgeWeight((GraphNode) allNodes.getObject())) {
+                heaviestNode = (GraphNode) allNodes.getObject();
             }
             allNodes.next();
         }
-        return heavyNode;
+        return heaviestNode;
     }
 }
