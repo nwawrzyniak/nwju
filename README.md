@@ -63,7 +63,7 @@ git pull
 
 It is recommended to put the files in a new subdirectory inside of ```myProjectRoot/lib/```, preferably called ```nwawsoft-java-util``` to never mix up the contents of your lib directory.
 
-To update the library if it was installed this way you have to redownload the current version via the same link and replace all files with the newer ones.
+To update the library if it was installed this way you have to redownload the current version via the same link and copy the new files over the old ones.
 
 ---
 ## Improving this library
