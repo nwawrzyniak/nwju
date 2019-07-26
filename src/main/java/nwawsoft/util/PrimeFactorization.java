@@ -38,10 +38,10 @@ public class PrimeFactorization {
                     }
                 }
             } // end of trial divisions
-            int productOfValues = IntListFunctions.multiplyValues(divisors);
+            int productOfValues = IntList.multiplyValues(divisors);
             if (number == productOfValues) { // case: primes are complete
                 // (and every single one is unique!)
-                primes = new int[divisors.count()];
+                primes = new int[divisors.getLength()];
                 int i = 0;
                 divisors.toFirst();
                 while (divisors.hasAccess()) {

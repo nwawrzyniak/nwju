@@ -2,6 +2,7 @@ package nwawsoft.util;
 
 public class List {
     private Node first, tail, current;
+    private int length;
 
     /**
      * Eine leere Liste wird erzeugt.
@@ -14,6 +15,7 @@ public class List {
          * zeigt auf das vorangehende Element.
          */
         current = first;
+        length = 0;
     }
 
     /**
@@ -80,7 +82,7 @@ public class List {
      */
     public Object getObject() {
         if (this.hasAccess())
-            return current.content();
+            return current.getContent();
         else
             return null;
     }
@@ -92,7 +94,7 @@ public class List {
      *
      * @param pObject Inhaltsobjekt
      */
-    public void setObject(Object pObject) {
+    public void setObject(final Object pObject) {
         if (pObject != null && this.hasAccess())
             current.setContent(pObject);
     }
@@ -107,7 +109,7 @@ public class List {
      *
      * @param pObject Inhaltsobject
      */
-    public void append(Object pObject) {
+    public void append(final Object pObject) {
         if (pObject != null) {
             Node lNewNode, lPos0;
             lPos0 = current;
@@ -121,6 +123,7 @@ public class List {
             }
             tail.setNext(lNewNode);
             current = lPos0;
+            length++;
         }
     }
 
@@ -136,7 +139,7 @@ public class List {
      *
      * @param pObject Inhaltsobjekt
      */
-    public void insert(Object pObject) {
+    public void insert(final Object pObject) {
         if (pObject != null) {
             Node lNewNode, lFront, lPos;
             if (this.isEmpty())
@@ -158,6 +161,7 @@ public class List {
                 }
                 current = lPos;
             }
+            length++;
         }
     }
 
@@ -188,7 +192,7 @@ public class List {
      *
      * @param pList Liste
      */
-    public void concat(List pList) {
+    public void concat(final List pList) {
         Node lCurrent1, lCurrent2, lPos0;
         if (pList != null && !pList.isEmpty()) {
             if (this.isEmpty()) {
@@ -209,11 +213,13 @@ public class List {
                     current = pList.tail;
                 tail = pList.tail;
             }
+            length += pList.getLength();
             // pList wird zur leeren Liste
             pList.tail = new Node(null); // Dummy
             pList.first = pList.tail;
             pList.tail.setNext(tail);
             pList.current = pList.tail;
+            pList.length = 0;
         }
     }
 
@@ -247,17 +253,18 @@ public class List {
                 if (current == tail)
                     tail.setNext(lFront);
             }
+            length--;
         }
     }
 
     /**
-     * Counts the elements in the list. 'Current' position gets set to first.
+     * Counts the elements in the list. The 'current' reference gets set to the first element of the List.
      *
-     * @return the amount of elements in the list
+     * @return the amount of elements in the list.
+     * @deprecated use getLength() instead to not move the 'current' reference.
      */
+    @Deprecated
     public int count() {
-        /* ToDo: Make this function obsolete by keeping track of the element count at all time and creating two getters
-            named count() [yes, replace THIS method] and getElementAmount() [to conform the standards]. */
         int amount = 0;
         this.toFirst();
         while (this.hasAccess()) {
@@ -266,6 +273,15 @@ public class List {
         }
         this.toFirst();
         return amount;
+    }
+
+    /**
+     * Returns the amount of elements in the List.
+     *
+     * @return the amount of elements in the list.
+     */
+    public int getLength() {
+        return length;
     }
 
     /**
@@ -327,7 +343,7 @@ public class List {
     /**
      * Checks whether two lists have no entries that fit Object.equals().
      * Note that this has a run-time of O(a.count()*b.count()).
-     * 'Current' position gets set to first.
+     * The 'current' reference of both List objects gets gets set to their respective first elements.
      *
      * @param a the first List
      * @param b the second List
@@ -355,7 +371,7 @@ public class List {
     /**
      * Checks whether the list has no entry that fits Object.equals() for any object in the specified List.
      * Note that this has a run-time of O(this.count()*b.count()).
-     * 'Current' position gets set to first.
+     * The 'current' reference of both List objects gets gets set to their respective first elements.
      *
      * @param l the List to compare to
      * @return true if no match was found. Else false.
@@ -381,7 +397,7 @@ public class List {
             contentObj = pContent;
         }
 
-        public Object content() {
+        public Object getContent() {
             return contentObj;
         }
 

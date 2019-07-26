@@ -52,12 +52,12 @@ public class BinaryTree extends Tree {
      */
     @Deprecated
     public BinaryTree(List treeList) {
-        if (treeList.count() >= 2) {
+        if (treeList.getLength() >= 2) {
             treeList.toFirst();
             leftTree = (Tree) treeList.getObject();
             treeList.next();
             rightTree = (Tree) treeList.getObject();
-        } else if (treeList.count() == 1) {
+        } else if (treeList.getLength() == 1) {
             treeList.toFirst();
             leftTree = (Tree) treeList.getObject();
             DebugPrinter.dp(this, "I only got one Tree object from treeList, so I will only fill leftTree and set " +
