@@ -19,7 +19,7 @@ public class Tree {
     }
 
     /**
-     * Creates a Tree object that stores a passed List of Tree objects. If the List contained non-Tree objects or null 
+     * Creates a Tree object that stores a passed List of Tree objects. If the List contained non-Tree objects or null
      * objects they are filtered out.
      *
      * @param treeList a List of Tree objects.
@@ -27,7 +27,7 @@ public class Tree {
     public Tree(final List treeList) {
         if (treeList.isType(this.getClass())) {
             this.treeList = treeList;
-            subTreeCount = this.treeList.count();
+            subTreeCount = this.treeList.getLength();
         } else {
             removeNonTrees(treeList, false);
         }
@@ -44,7 +44,7 @@ public class Tree {
     public Tree(final List treeList, boolean allowNull) {
         if (treeList.isTypeOrNull(this.getClass())) {
             this.treeList = treeList;
-            subTreeCount = this.treeList.count();
+            subTreeCount = this.treeList.getLength();
         } else {
             removeNonTrees(treeList, allowNull);
         }
@@ -74,7 +74,7 @@ public class Tree {
                 }
             }
         }
-        subTreeCount = treeList.count();
+        subTreeCount = treeList.getLength();
     }
 
     /**
@@ -129,7 +129,7 @@ public class Tree {
      * @return the Tree object with the specified index.
      */
     public Tree getTree(final int index) {
-        if (treeList.count() > index) {
+        if (treeList.getLength() > index) {
             goTo(index);
             return (Tree)treeList.getObject();
         } else {

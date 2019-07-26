@@ -3,8 +3,6 @@ package nwawsoft.util;
 /**
  * Works like list but ignores objects except Integers and lists that are not purely made out of
  * Integers.
- * <p>
- * Created by Ernst on 11.07.2017.
  */
 public class IntList extends List {
     @Override
@@ -33,5 +31,37 @@ public class IntList extends List {
         if (pList instanceof IntList) {
             super.concat(pList);
         }
+    }
+
+    /**
+     * // ToDo doc
+     *
+     * @param ints
+     * @return
+     */
+    public static int multiplyValues(IntList ints) {
+        int product = 1;
+        ints.toFirst();
+        while (ints.hasAccess()) {
+            product *= (Integer) ints.getObject();
+            ints.next();
+        }
+        return product;
+    }
+
+    /**
+     * // ToDo doc
+     *
+     * @param ints
+     * @return
+     */
+    public static int addValues(IntList ints) {
+        int sum = 0;
+        ints.toFirst();
+        while (ints.hasAccess()) {
+            sum += (Integer) ints.getObject();
+            ints.next();
+        }
+        return sum;
     }
 }
