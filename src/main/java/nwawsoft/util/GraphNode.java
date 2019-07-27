@@ -1,134 +1,166 @@
 package nwawsoft.util;
 
+/**
+ * Defines GraphNode objects as they are used in the Graph class. A GraphNode has a name, a list of edges to other
+ * GraphNode objects including their respective edge weights (often referred to as edgeWeights or edgeWeight) and the
+ * option to either be marked or not marked (controlled by the boolean marked).
+ */
 public class GraphNode {
     private String name;
     private List edges;
     private boolean marked;
 
     /**
-     * Ein Knoten mit dem Namen pName wird erzeugt.
-     * Der Knoten ist nicht markiert.
+     * Creates a new GraphNode object with name nodeName. It is unmarked.
      *
-     * @param pName Bezeichnung des Knotens
+     * @param nodeName the name of the new GraphNode object.
      */
-    public GraphNode(String pName) {
-        name = pName;
+    public GraphNode(final String nodeName) {
+        name = nodeName;
         edges = new List();
         marked = false;
     }
 
-    // Ende Klasse Edge
-
     /**
-     * Der Knoten wird markiert. Falls er
-     * nicht markiert ist, sonst bleibt er unveraendert.
+     * Sets "marked" to true.
      */
     public void mark() {
         marked = true;
     }
 
     /**
-     * Die Markierung des Knotens wird entfernt, falls er markiert ist,
-     * sonst bleibt er unveraendert.
+     * Sets "marked" to false.
      */
-    public void unmark() {
+    public void removeMark() {
         marked = false;
     }
 
     /**
-     * Die Anfrage liefert den Wert true, wenn der Knoten markiert ist,
-     * sonst liefert sie den Wert false.
+     * Returns whether the GraphNode object's "marked" flag is set.
      *
-     * @return true falls markiert, sonst false
+     * @return true if marked, else false.
      */
     public boolean isMarked() {
         return marked;
-
     }
 
     /**
-     * Die Anfrage liefert den Namen des Knotens.
+     * Returns the name of the GraphNode object.
      *
-     * @return Bezeichnung des Knotens
+     * @return the name of the GraphNode object.
      */
     public String getName() {
         return name;
     }
 
     /**
-     * Interne Methode
+     * Adds a new edge between the calling and the specified GraphNode objects with the specified weight to the list of
+     * known edges of the GraphNode.
+     *
+     * @param graphNode the GraphNode object to create a new edge to.
+     * @param weight the weight of the new edge between "this" and graphNode.
      */
-    void addEdge_(GraphNode pNode, double pWeight) {
-        Edge lEdge = new Edge(pNode, pWeight);
-        edges.append(lEdge);
+    protected void addEdge(final GraphNode graphNode, final double weight) {
+        Edge edge = new Edge(graphNode, weight);
+        edges.append(edge);
     }
 
-    // Hilfsmethoden
-
     /**
-     * Interne Methode
+     * Returns the edgeWeight of the calling and the specified GraphNode objects if there is any, otherwise Double.NaN.
+     *
+     * @param graphNode the GraphNode object to find the weight to.
+     * @return edgeWeight if any edge was found, otherwise Double.NaN.
      */
-    double getEdgeWeight_(GraphNode pNode) {
-        boolean ok = false;
-        Edge e = null;
+    protected double getEdgeWeight(final GraphNode graphNode) {
+        boolean found = false;
+        Edge edge = null;
         edges.toFirst();
-        while (!ok && edges.hasAccess()) {
-            e = (Edge) edges.getObject();
-            if (e.getNeighbour() == pNode)
-                ok = true;
+        while (!found && edges.hasAccess()) {
+            edge = (Edge) edges.getObject();
+            if (edge.getNeighbor() == graphNode) {
+                found = true;
+            }
             edges.next();
         }
-        if (!ok)
-            return Double.NaN; // Not a Number
-        else
-            return e.getWeight();
+        if (!found) {
+            return Double.NaN;
+        } else {
+            return edge.getWeight();
+        }
     }
 
     /**
-     * Interne Methode
+     * Removes any edges between the calling and the specified GraphNode objects if graphNode != null.
+     * If there were none, nothing happens.
+     *
+     * @param graphNode the GraphNode object to remove the edge to.
      */
-    void removeEdge_(GraphNode pNode) {
-        if (pNode != null) {
-            Edge e;
+    protected void removeEdge(final GraphNode graphNode) {
+        if (graphNode != null) {
+            Edge edge;
             edges.toFirst();
             while (edges.hasAccess()) {
-                e = (Edge) edges.getObject();
-                if (e.getNeighbour() == pNode)
+                edge = (Edge) edges.getObject();
+                if (edge.getNeighbor() == graphNode) {
                     edges.remove();
+                }
                 edges.next();
             }
         }
     }
 
     /**
-     * Interne Methode
+     * Returns a List object of all neighbors.
+     *
+     * @return a list of all neighbors.
      */
-    List getNeighbours_() {
-        // liefert eine Liste mit den Nachbarknoten
-        List lList = new List();
+    protected List getNeighbors() {
+        List neighbors = new List();
         edges.toFirst();
         while (edges.hasAccess()) {
-            Edge lEdge = (Edge) edges.getObject();
-            lList.append(lEdge.getNeighbour());
+            Edge edge = (Edge) edges.getObject();
+            neighbors.append(edge.getNeighbor());
             edges.next();
         }
-        return lList;
+        return neighbors;
     }
 
-    // Klasse Edge
-    public class Edge {
-        protected GraphNode neighbour;
+    /**
+     * Defines an Edge object (referred to as edge) as it is used in the GraphNode object. An edge has one
+     * connected neighbor GraphNode object, can have a weight (also referred to as edgeWeight) and can either be marked
+     * or not marked (controlled by the boolean marked).
+     */
+    private class Edge {
+        protected GraphNode neighbor;
         protected double weight;
         protected boolean marked;
 
-        public Edge(GraphNode pNeighbour, double pWeight) {
-            neighbour = pNeighbour;
-            weight = pWeight;
+        public Edge(final GraphNode neighborNode) {
+            neighbor = neighborNode;
+            weight = 0.0;
             marked = false;
         }
 
-        public GraphNode getNeighbour() {
-            return neighbour;
+        public Edge(final GraphNode neighborNode, final double weight) {
+            neighbor = neighborNode;
+            this.weight = weight;
+            marked = false;
+        }
+
+        public Edge(final GraphNode neighborNode, final double weight, final boolean marked) {
+            neighbor = neighborNode;
+            this.weight = weight;
+            this.marked = marked;
+        }
+
+        public Edge(final GraphNode neighborNode, final boolean marked) {
+            neighbor = neighborNode;
+            weight = 0.0;
+            this.marked = marked;
+        }
+
+        public GraphNode getNeighbor() {
+            return neighbor;
         }
 
         public double getWeight() {
@@ -138,7 +170,5 @@ public class GraphNode {
         public boolean isMarked() {
             return marked;
         }
-
     }
-
 }
