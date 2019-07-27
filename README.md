@@ -76,4 +76,4 @@ Requests for functions that are general enough to be included in a standard libr
 
 ---
 ## Disclaimer
-This code mess is a mix of fresh, clean, well-documented code and over 10 year old school project snippets. I do not take any warranty for the usage of this library, though I intend to maintain this library as well as possible. Coding style may vary in quality and comments and documentation may vary in quality and existance, mostly depening on the when the code was written. Currently the library is getting a complete overhaul and I cannot guarantee that everything will stay 100% backwards compatible.
+I do not take any warranty for the usage of this library, though I intend to maintain this library as well as possible and will respond on to all feedback. Currently the library is getting a complete overhaul.
