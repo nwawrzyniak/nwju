@@ -5,7 +5,7 @@ Data structures include List, Stack, Queue, Tree, Graph and more.
 
 Provides a ton of additional functions for native data types (mainly char and String).
 
-This is the go-to library to include in any project if you want to start fresh with a lot of tools and up your sleeves.
+This is the go-to library to include in any project if you want to start fresh with a lot of tools up your sleeves.
 
 ---
 ## Adding this library to your project
