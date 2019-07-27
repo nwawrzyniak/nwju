@@ -21,7 +21,7 @@ git submodule update --init lib/nwawsoft-java-util
 ```
 From time to time its also worth considering updating the library to a newer version. If you want to update this library to its latest commit, assuming you are in a terminal in your project root, use
 ```
-git submodule update lib/nwawsoft-java-util --remote
+git submodule update --remote lib/nwawsoft-java-util
 git commit -am "Updated library nwawsoft-java-util to latest commit."
 git push
 ```
