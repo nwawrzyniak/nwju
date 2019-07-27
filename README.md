@@ -14,7 +14,7 @@ There is an entirety of at least 5 ways to include this library in your project.
 ```
 git submodule add https://github.com/nwawrzyniak/nwawsoft-java-util lib/nwawsoft-java-util
 ```
-Do not forget to load the contents of the submodule after added the submodule, as this will only set some links for git and create an empty directory. To load the contents of **all** git submodules use
+Do not forget to load the contents of the submodule after adding the submodule, as this will only set some data for git and create an empty directory. To really download the contents of **all** git submodules use
 ```
 git submodule update --init --recursive
 ```
