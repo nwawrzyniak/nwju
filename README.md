@@ -44,10 +44,11 @@ Add the following two snippets somewhere between the ```<project>``` and ```</pr
   </dependencies>
 ```
 ### Method 3) As a ```git subtree```:
+To add the library to your git project as a git subtree, assuming you are in a terminal in your project root, make the following call
 ```
 git subtree add --prefix lib/nwawsoft-java-util https://github.com/nwawrzyniak/nwawsoft-java-util.git master --squash
 ```
-In that case, you would update the library like this:
+To update the library if it was installed this way use 
 ```
 git subtree pull --prefix lib/nwawsoft-java-util https://github.com/nwawrzyniak/nwawsoft-java-util.git master --squash
 ```
