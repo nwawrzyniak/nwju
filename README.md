@@ -15,18 +15,24 @@ To add the library to your git project as a git submodule into your lib director
 ```
 git submodule add -b master https://github.com/nwawrzyniak/nwawsoft-java-util lib/nwawsoft-java-util
 ```
-This _may_ only set some data for git and create an empty directory. To download the contents of the git submodule use
+This may only set some data for git and create an empty directory. To download ("update") the contents of this submodule use
 ```
 git submodule update --init lib/nwawsoft-java-util
 ```
-To download the contents of **all** git submodules use
+To download ("update") the contents of **all** git submodules use
 ```
 git submodule update --init --recursive
 ```
-From time to time its also worth considering updating the library. If you want to update **all** git submodules use 
+From time to time its also worth considering updating the library. If you want to update this library use
+```
+git submodule update lib/nwawsoft-java-util --remote
+git commit -am "Updated library nwawsoft-java-util to latest commit."
+git push
+```
+If you want to update **all** git submodules use 
 ```
 git submodule update --recursive --remote
-git commit -am "Updated git submodules."
+git commit -am "Updated all git submodules to latest commit."
 git push
 ```
 ### Method 2) Via ```Maven```, ```JitPack``` and ```pom.xml```:
