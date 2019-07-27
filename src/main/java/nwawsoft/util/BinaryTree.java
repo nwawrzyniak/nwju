@@ -66,7 +66,7 @@ public class BinaryTree extends Tree {
         } else {
             leftTree = null;
             rightTree = null;
-            DebugPrinter.dp(this, "I got no Tree objects form treeList, so I will set leftTree and rightTree to null.");
+            DebugPrinter.dp(this, "I got no Tree objects from treeList, so I will set leftTree and rightTree to null.");
         }
         content = null;
     }
