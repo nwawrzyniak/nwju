@@ -57,7 +57,7 @@ To update the library if it was installed this way use
 ```
 git subtree pull --prefix lib/nwawsoft-java-util https://github.com/nwawrzyniak/nwawsoft-java-util.git master --squash
 ```
-### Method 4) Cloning into myProjectRoot/lib/nwawsoft-java-util:
+### Method 4) Cloning this repository:
 To add this library to your project into your lib directory by cloning this repository, assuming you are in a terminal in your project root, make the following calls
 ```
 mkdir lib
