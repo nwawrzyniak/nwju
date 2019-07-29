@@ -59,15 +59,13 @@ public class DebugPrinter {
             } else {
                 if (lineMode == 0) {
                     System.out.println("DebugPrinter for " + methodPath + "." + methodName + ":");
-                }
-                else if (lineMode == 1) {
+                } else if (lineMode == 1) {
                     System.out.print("DebugPrinter for " + methodPath + "." + methodName + ": " );
                 }
             }
             if (lineMode == 0) {
                 System.out.println(printableString);
-            }
-            else if (lineMode == 1) {
+            } else if (lineMode == 1) {
                 System.out.print(printableString);
             }
         }
