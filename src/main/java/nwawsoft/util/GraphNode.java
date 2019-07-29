@@ -54,11 +54,11 @@ public class GraphNode {
     }
 
     /**
-     * Adds a new edge between the calling and the specified GraphNode objects with the specified weight to the list of
+     * Adds a new edge from the calling to the specified GraphNode objects with the specified weight to the list of
      * known edges of the GraphNode.
      *
      * @param graphNode the GraphNode object to create a new edge to.
-     * @param weight the weight of the new edge between "this" and graphNode.
+     * @param weight the weight of the new edge from "this" to graphNode.
      */
     protected void addEdge(final GraphNode graphNode, final double weight) {
         Edge edge = new Edge(graphNode, weight);

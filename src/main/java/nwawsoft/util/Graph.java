@@ -1,5 +1,9 @@
 package nwawsoft.util;
 
+/**
+ * Graph data structure. A Graph can contain none to infinitely many GraphNode objects with or without edges between
+ * them, which again can be either weighted ur unweighted.
+ */
 public class Graph {
     private List nodeList;
 
@@ -13,86 +17,111 @@ public class Graph {
     /**
      * Returns true if the Graph contains no GraphNode objects. Else false.
      *
-     * @return true, falls leer, sonst false
+     * @return true if the Graph contains no GraphNode objects. Else false.
      */
     public boolean isEmpty() {
         return nodeList.isEmpty();
     }
 
     /**
-     * Der Knoten graphNode wird dem Graphen hinzugefuegt.
-     * Falls bereits ein Knoten mit gleichem Namen im
-     * Graphen existiert, wird dieser Knoten nicht eingefuegt.
-     * Falls graphNode null ist, veraendert sich der Graph nicht.
+     * Adds the specified GraphNode object to the Graph.
+     * If it is null or a GraphNode object with the same name exists in the Graph already it is not added.
      *
-     * @param graphNode neuer Knoten
+     * @param graphNode the GraphNode object to add to the Graph.
      */
     public void addNode(final GraphNode graphNode) {
-        if (graphNode != null && !this.hasNode(graphNode.getName())) {
+        if (graphNode != null && !this.contains(graphNode.getName())) {
             nodeList.append(graphNode);
+        } else {
+            DebugPrinter.dp(this, "GraphNode not added. GraphNode was either null or a GraphNode with the specified " +
+                    "name is already in the Graph.");
         }
     }
 
     /**
-     * Die Anfrage liefert true, wenn ein Knoten mit dem Namen
-     * pName im Graphen existiert.
-     * Sonst wird false zurueck gegeben.
+     * Returns whether a GraphNode object with the specified name is in the Graph.
      *
-     * @param nodeName Knotenbezeichnung
-     * @return true, falls es Knoten gibt, sonst false
+     * @param nodeName the name of a GraphNode object.
+     * @return true if a GraphNode object with the specified name is in the Graph, else false.
      */
-    public boolean hasNode(final String nodeName) {
-        boolean found = false;
+    public boolean contains(final String nodeName) {
+        GraphNode currentNode;
         nodeList.toFirst();
-        while (nodeList.hasAccess() && !found) {
-            GraphNode node = (GraphNode) nodeList.getObject();
-            found = node.getName().equals(nodeName);
-            nodeList.next();
+        while (nodeList.hasAccess()) {
+            currentNode = (GraphNode) nodeList.getObject();
+            if (currentNode.getName().equals(nodeName)) {
+                return true;
+            } else {
+                nodeList.next();
+            }
         }
-        return found;
+        return false;
     }
 
     /**
-     * Die Anfrage liefert den Knoten mit dem Namen nodeName zurueck.
-     * Falls es keinen Knoten mit dem Namen im Graphen gibt,
-     * wird null zurueck gegeben.
+     * Returns whether a specified GraphNode object is in the Graph.
      *
-     * @param nodeName Knotenbezeichnung
-     * @return Objekt der Klasse GraphNode
+     * @param graphNode a GraphNode object.
+     * @return true if the GraphNode is in the Graph, else false.
+     */
+    public boolean contains(final GraphNode graphNode) {
+        nodeList.toFirst();
+        while (nodeList.hasAccess()) {
+            if ((nodeList.getObject()).equals(graphNode)) {
+                return true;
+            } else {
+                nodeList.next();
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Returns the GraphNode object with the specified name.
+     * Returns null if there is no such GraphNode in the Graph.
+     *
+     * @param nodeName the name of a GraphNode object.
+     * @return the GraphNode object with the specified name or null if not on the Graph.
      */
     public GraphNode getNode(final String nodeName) {
-        GraphNode lNode0 = null;
+        GraphNode specifiedNode = null;
+        GraphNode currentNode;
         nodeList.toFirst();
-        boolean lStop = false;
-        while (nodeList.hasAccess() && !lStop) {
-            GraphNode lNode = (GraphNode) nodeList.getObject();
-            if (lNode.getName().equals(nodeName)) {
-                lNode0 = lNode;
-                lStop = true;
+        boolean found = false;
+        while (nodeList.hasAccess() && !found) {
+            currentNode = (GraphNode) nodeList.getObject();
+            if (currentNode.getName().equals(nodeName)) {
+                specifiedNode = currentNode;
+                found = true;
+            } else {
+                nodeList.next();
             }
-            nodeList.next();
         }
-        return lNode0;
+        if (specifiedNode == null) {
+            DebugPrinter.dp(this, "GraphNode not found in Graph. Returning null.");
+        }
+        return specifiedNode;
     }
 
     /**
-     * Falls graphNode ein Knoten des Graphen ist, so werden er und alle
-     * mit ihm verbundenen Kanten aus dem Graphen entfernt.
-     * Sonst wird der Graph nicht veraendert.
+     * If graphNode != null and graphNode is in the Graph it and all its edges are removed from the Graph.
+     * If graphNode == null or not in the Graph nothing happens.
      *
-     * @param graphNode Knoten
+     * @param graphNode the graphNode object to remove from the Graph.
      */
     public void removeNode(final GraphNode graphNode) {
         if (graphNode != null) {
+            List neighbors;
+            GraphNode currentNode;
             nodeList.toFirst();
             while (nodeList.hasAccess()) {
-                GraphNode lNode = (GraphNode) nodeList.getObject();
-                if (lNode.getName().equals(graphNode.getName())) {
-                    List neighbors = this.getNeighbors(lNode);
+                currentNode = (GraphNode) nodeList.getObject();
+                if (currentNode.getName().equals(graphNode.getName())) {
+                    neighbors = this.getNeighbors(currentNode);
                     neighbors.toFirst();
                     while (neighbors.hasAccess()) {
-                        GraphNode lNode1 = (GraphNode) neighbors.getObject();
-                        this.removeEdge(lNode, lNode1);
+                        GraphNode currentNeighbor = (GraphNode) neighbors.getObject();
+                        this.removeEdge(currentNode, currentNeighbor);
                         neighbors.next();
                     }
                     nodeList.remove();
@@ -103,17 +132,13 @@ public class Graph {
     }
 
     /**
-     * Falls eine Kante zwischen graphNode1 und graphNode2 noch nicht existiert,
-     * werden die Knoten graphNode1 und graphNode2 durch eine Kante verbunden,
-     * die das Gewicht weight hat. graphNode1 ist also Nachbarknoten
-     * von graphNode2 und umgekehrt. Falls eine Kante zwischen graphNode1 und graphNode2
-     * bereits existiert, erhaelt sie das Gewicht weight.
-     * Falls einer der Knoten graphNode1 oder graphNode2 im Graphen nicht existiert oder null ist,
-     * veraendert sich der Graph nicht.
+     * Adds an edge from graphNode1 to graphNode2 with the specified weight.
+     * If an edge from graphNode1 to graphNode2 already exists only its weight is set to the new weight.
+     * If any specified GraphNode object is null or not in the Graph, nothing changes.
      *
-     * @param graphNode1  Knoten
-     * @param graphNode2  Knoten
-     * @param weight Kantengewicht
+     * @param graphNode1 the GraphNode object to create an edge to graphNode2 from.
+     * @param graphNode2 the GraphNode object to create an edge from graphNode 1 to.
+     * @param weight the weight of the new edge.
      */
     public void addEdge(final GraphNode graphNode1, final GraphNode graphNode2, final double weight) {
         if (graphNode1 != null && graphNode2 != null) {
@@ -121,71 +146,112 @@ public class Graph {
                 this.removeEdge(graphNode1, graphNode2);
             }
             graphNode1.addEdge(graphNode2, weight);
+        }
+    }
+
+    /**
+     * Adds an edge from graphNode1 to graphNode2 and from graphNode1 to graphNode2, both with the specified weight.
+     * If edges between graphNode1 and graphNode2 already exist only their weight is set to the new weight.
+     * If any specified GraphNode object is null or not in the Graph, nothing changes.
+     *
+     * @param graphNode1 the GraphNode object to create an edge to and from graphNode2.
+     * @param graphNode2 the GraphNode object to create an edge to and from graphNode1.
+     * @param weight the weight of the new edges.
+     */
+    public void addBidirectionalEdge(final GraphNode graphNode1, final GraphNode graphNode2, final double weight) {
+        if (graphNode1 != null && graphNode2 != null) {
+            if (this.hasEdge(graphNode1, graphNode2)) {
+                this.removeEdge(graphNode1, graphNode2);
+                this.removeEdge(graphNode2, graphNode1);
+            }
+            graphNode1.addEdge(graphNode2, weight);
             graphNode2.addEdge(graphNode1, weight);
         }
     }
 
     /**
-     * Die Anfrage liefert true, wenn ein Knoten mit
-     * dem Namen pName im Graphen existiert.
-     * Sonst wird false zurueck gegeben.
+     * Returns whether there is an edge between the specified GraphNode objects in the Graph.
+     * If any GraphNode object is null or not in the Graph the result is always false.
      *
-     * @param pNode1 Knoten
-     * @param pNode2 Knoten
-     * @return true, falls Kante existiert, sonst false
+     * @param graphNode1 a GraphNode object.
+     * @param graphNode2 another GraphNode object.
+     * @return true if edge exists, else false.
      */
-    public boolean hasEdge(final GraphNode pNode1, final GraphNode pNode2) {
-        boolean result = false;
-        List lNeighbours;
-        GraphNode lNeighbour;
-        if ((pNode1 != null) && (pNode2 != null)) {
-            lNeighbours = pNode1.getNeighbors();
-            if (!lNeighbours.isEmpty()) {
-                lNeighbours.toFirst();
-                while (lNeighbours.hasAccess()) {
-                    lNeighbour = (GraphNode) lNeighbours.getObject();
-                    if (lNeighbour.getName().equals(pNode2.getName())) {
-                        result = true;
+    public boolean hasEdge(final GraphNode graphNode1, final GraphNode graphNode2) {
+        List neighbors;
+        GraphNode neighbor;
+        if ((graphNode1 != null) && (graphNode2 != null)) {
+            neighbors = graphNode1.getNeighbors();
+            if (!neighbors.isEmpty()) {
+                neighbors.toFirst();
+                while (neighbors.hasAccess()) {
+                    neighbor = (GraphNode) neighbors.getObject();
+                    if (neighbor.getName().equals(graphNode2.getName())) {
+                        return true;
+                    } else {
+                        neighbors.next();
                     }
-                    lNeighbours.next();
                 }
             }
         }
-        return result;
+        return false;
     }
 
     /**
-     * Falls pNode1 und pNode2 nicht null sind und eine Kante zwischen
-     * pNode1 und pNode2 existiert, wird die Kante geloescht. Sonst
-     * bleibt der Graph unveraendert.
+     * Removes the edge from graphNode1 to graphNode2 if there was any.
      *
-     * @param pNode1 Knoten
-     * @param pNode2 Knoten
+     * @param graphNode1 a GraphNode object in the Graph.
+     * @param graphNode2 another GraphNode object in the Graph.
      */
-    public void removeEdge(final GraphNode pNode1, final GraphNode pNode2) {
-        if (pNode1 != null && pNode2 != null && this.hasEdge(pNode1, pNode2)) {
-            pNode1.removeEdge(pNode2);
-            pNode2.removeEdge(pNode1);
+    public void removeEdge(final GraphNode graphNode1, final GraphNode graphNode2) {
+        if (graphNode1 != null && graphNode2 != null && this.hasEdge(graphNode1, graphNode2)) {
+            graphNode1.removeEdge(graphNode2);
+        } else {
+            DebugPrinter.dp(this, "Either " + graphNode1 + " or " + graphNode2 + " is null or there was no edge " +
+                    "between them. Skipping.");
         }
     }
 
     /**
-     * Die Anfrage liefert das Gewicht der Kante zwischen pNode1 und pNode2.
-     * Falls die Kante nicht existiert, wird Double.NaN (not a number)
-     * zurueck gegeben.
+     * Removes both edges between graphNode1 and graphNode2 if there were any.
      *
-     * @param pNode1 Knoten
-     * @param pNode2 Knoten
-     * @return Kantengewicht
+     * @param graphNode1 a GraphNode object in the Graph.
+     * @param graphNode2 another GraphNode object in the Graph.
      */
-    public double getEdgeWeight(final GraphNode pNode1, final GraphNode pNode2) {
-        return pNode1.getEdgeWeight(pNode2);
+    public void removeEdges(final GraphNode graphNode1, final GraphNode graphNode2) {
+        boolean found = false;
+        if (graphNode1 != null && graphNode2 != null) {
+            if (this.hasEdge(graphNode1, graphNode2)) {
+                graphNode1.removeEdge(graphNode2);
+                found = true;
+            }
+            if (this.hasEdge(graphNode2, graphNode1)) {
+                graphNode2.removeEdge(graphNode1);
+                found = true;
+            }
+            if (!found) {
+                DebugPrinter.dp(this, "No edges found between " + graphNode1 + " and " + graphNode2 + ". Skipping.");
+            }
+        } else {
+            DebugPrinter.dp(this, "Either " + graphNode1 + " or " + graphNode2 + " is null. Skipping.");
+        }
     }
 
     /**
-     * Unmarks all GraphNode objects in the Graph.
+     * Returns the weight of the edge from graphNode1 to graphNode2.
+     *
+     * @param graphNode1 a GraphNode object.
+     * @param graphNode2 another GraphNode object.
+     * @return the weight of the edge or Double.NaN if there is no such edge.
      */
-    public void unmark() {
+    public double getEdgeWeight(final GraphNode graphNode1, final GraphNode graphNode2) {
+        return graphNode1.getEdgeWeight(graphNode2);
+    }
+
+    /**
+     * Sets the 'marked' boolean to false for all GraphNode objects in the Graph.
+     */
+    public void removeMarks() {
         if (!nodeList.isEmpty()) {
             nodeList.toFirst();
             while (nodeList.hasAccess()) {
@@ -196,50 +262,48 @@ public class Graph {
     }
 
     /**
-     * Die Anfrage liefert den Wert true, wenn alle Knoten des Graphen
-     * markiert sind, sonst liefert sie den Wert false.
+     * Returns whether all GraphNode objects in the Graph are marked.
      *
-     * @return true, lass alle Knoten markiert, sonst false
+     * @return true if all GraphNode objects in the Graph are marked, else false. Also true if Graph is empty.
      */
     public boolean allNodesMarked() {
+        boolean foundUnmarked = false;
         if (!nodeList.isEmpty()) {
             nodeList.toFirst();
-            boolean lAllMarked = true;
-            while (nodeList.hasAccess() && lAllMarked) {
+            while (nodeList.hasAccess() && !foundUnmarked) {
                 if (!((GraphNode) nodeList.getObject()).isMarked()) {
-                    lAllMarked = false;
+                    foundUnmarked = true;
+                } else {
+                    nodeList.next();
                 }
-                nodeList.next();
             }
-            return lAllMarked;
-        } else return true;
+        }
+        return !foundUnmarked;
     }
 
     /**
-     * Die Anfrage liefert eine Liste, die alle Knoten des Graphen enthaelt.
+     * Returns a new List object containing all GraphNode objects in the Graph.
      *
-     * @return Knotenliste
+     * @return a new List object containing all GraphNode objects in the Graph.
      */
     public List getNodes() {
-        List lList = new List();
-        nodeList.toFirst();
-        while (nodeList.hasAccess()) {
-            GraphNode g = (GraphNode) nodeList.getObject();
-            lList.append(g);
-            nodeList.next();
+        List nodeList = new List();
+        this.nodeList.toFirst();
+        while (this.nodeList.hasAccess()) {
+            nodeList.append(this.nodeList.getObject());
+            this.nodeList.next();
         }
-        return lList;
+        return nodeList;
     }
 
     /**
-     * Die Anfrage liefert eine Liste, die alle Nachbarknoten des
-     * Knotens pNode enthaelt.
+     * Returns a new List object containing all GraphNode objects that are neighbors of the specified GraphNode object.
      *
-     * @param pNode Knoten
-     * @return Liste mit allen Nachbarknoten
+     * @param graphNode a GraphNode object which the Graph contains.
+     * @return a new List object containing all GraphNode objects that are neighbors of the specified GraphNode object.
      */
-    public List getNeighbors(final GraphNode pNode) {
-        return pNode.getNeighbors();
+    public List getNeighbors(final GraphNode graphNode) {
+        return graphNode.getNeighbors();
     }
 
     /**
@@ -252,33 +316,33 @@ public class Graph {
         List allNodes = getNodes();
         allNodes.toFirst();
         while (allNodes.hasAccess()) {
-            combinedWeight = combinedWeight + edgeWeight((GraphNode) allNodes.getObject());
+            combinedWeight = combinedWeight + cumulativeEdgeWeight((GraphNode) allNodes.getObject());
             allNodes.next();
         }
         return combinedWeight;
     }
 
     /**
-     * Returns the added edgeWeights of all edges of the specified GraphNode object.
+     * Returns the summed up edgeWeights of all edges of the specified GraphNode object.
      *
-     * @param pNode a GraphNode object.
+     * @param graphNode a GraphNode object.
      * @return the sum of all edgeWeights of the GraphNode (and his neighbors).
      */
-    public double edgeWeight(final GraphNode pNode) {
+    public double cumulativeEdgeWeight(final GraphNode graphNode) {
         double nodeWeight = 0;
-        List neighbors = pNode.getNeighbors();
+        List neighbors = graphNode.getNeighbors();
         neighbors.toFirst();
         while (neighbors.hasAccess()) {
-            nodeWeight = nodeWeight + getEdgeWeight(pNode, (GraphNode) neighbors.getObject());
+            nodeWeight = nodeWeight + getEdgeWeight(graphNode, (GraphNode) neighbors.getObject());
             neighbors.next();
         }
         return nodeWeight;
     }
 
     /**
-     * Returns the GraphNode object with the highest added edgeWeights in the Graph.
+     * Returns the GraphNode object with the highest summed up edgeWeights in the Graph.
      *
-     * @return the GraphNode with the highest added edgeWeights.
+     * @return the GraphNode with the highest summed up edgeWeights.
      */
     public GraphNode highestWeight() {
         GraphNode heaviestNode;
@@ -286,7 +350,7 @@ public class Graph {
         nodes.toFirst();
         heaviestNode = (GraphNode) nodes.getObject();
         while (nodes.hasAccess()) {
-            if (edgeWeight(heaviestNode) < edgeWeight((GraphNode) nodes.getObject())) {
+            if (cumulativeEdgeWeight(heaviestNode) < cumulativeEdgeWeight((GraphNode) nodes.getObject())) {
                 heaviestNode = (GraphNode) nodes.getObject();
             }
             nodes.next();
