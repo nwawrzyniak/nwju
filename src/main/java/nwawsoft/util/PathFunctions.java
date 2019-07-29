@@ -5,40 +5,45 @@ import java.io.IOException;
 import java.net.URL;
 
 /**
- * Created by Ernst on 18.07.2017.
+ * Provides functions for easier work with files, directories and paths.
  */
 public class PathFunctions {
     /**
-     * Prints the current working directory with two methods.
+     * Prints the current working directory using File.getCanonicalPath() and System.getProperty("user.dir").
      */
     public static void printCurrentWorkingDirectory() {
         try {
-            System.out.println("Result of \"File(\".\").getCanonicalPath()\":\n" + new File(".").getCanonicalPath() + "\n");
+            System.out.println("Result of \"File(\".\").getCanonicalPath()\":");
+            System.out.println("" + new File(".").getCanonicalPath());
         } catch (IOException e) {
-            System.err.println("\"File(\".\").getCanonicalPath()\" failed.\nResults of \"System.getProperty(\"user.dir\")\" follow after stack trace.");
+            System.err.println("\"File(\".\").getCanonicalPath()\" failed.\nResults of \"System.getProperty" +
+                    "(\"user.dir\")\" follow after stack trace.");
             e.printStackTrace();
         }
         System.out.println("Result of \"System.getProperty(\"user.dir\")\":\n" + System.getProperty("user.dir"));
     }
 
     /**
+     * Returns whether a specified directory exists.
      * Original code: https://www.java-forum.org/thema/wie-kann-ich-schauen-ob-ein-ordner-vorhanden-ist.568/
      *
-     * @param dirName the name of the directory."
-     * @return true if directory exists, else false
+     * @param dirName the name of the directory.
+     * @return true if directory exists, else false.
      */
-    public static boolean directoryExists(String dirName) {
-        File stats = new File(dirName);
-        if (stats.exists()) {
-            return stats.isDirectory();
+    public static boolean existsDir(String dirName) {
+        File dir = new File(dirName);
+        if (dir.exists()) {
+            return dir.isDirectory();
+        } else {
+            return false;
         }
-        return false;
     }
 
     /**
-     * Wrapper for using the ClassLoader.
+     * Wrapper for obtaining a URL using the ClassLoader to load a resource.
      *
-     * @param path the path of a file or directory beginning at the resource root. (e.g. "profiles/file_3.txt")
+     * @param path the path of a file or directory beginning at the resource root. (e.g. "profiles/file_3.txt").
+     * @return the URL of the file specified by the path.
      */
     public URL loadRes(String path) {
         return getClass().getClassLoader().getResource(path);
