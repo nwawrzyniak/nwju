@@ -4,11 +4,23 @@ package nwawsoft.util;
  * Simple data type for storing, passing and working with two objects of any type.
  */
 public class TwoTuple {
-    Object object1 = null;
-    Object object2 = null;
+    private Object object1;
+    private Object object2;
 
-    public TwoTuple() {}
+    /**
+     * Creates an empty TwoTuple. Both objects are initialized to null.
+     */
+    public TwoTuple() {
+        object1 = null;
+        object2 = null;
+    }
 
+    /**
+     * Creates a TwoTuple from the specified objects. Objects may be null.
+     *
+     * @param object1 the first object.
+     * @param object2 the second object.
+     */
     public TwoTuple(Object object1, Object object2) {
         this.object1 = object1;
         this.object2 = object2;
