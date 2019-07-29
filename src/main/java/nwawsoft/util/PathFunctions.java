@@ -30,13 +30,12 @@ public class PathFunctions {
      * @param dirName the name of the directory.
      * @return true if directory exists, else false.
      */
-    public static boolean existsDir(String dirName) {
+    public static boolean existsDir(final String dirName) {
         File dir = new File(dirName);
         if (dir.exists()) {
             return dir.isDirectory();
-        } else {
-            return false;
         }
+        return false;
     }
 
     /**
@@ -45,7 +44,7 @@ public class PathFunctions {
      * @param path the path of a file or directory beginning at the resource root. (e.g. "profiles/file_3.txt").
      * @return the URL of the file specified by the path.
      */
-    public URL loadRes(String path) {
+    public URL loadRes(final String path) {
         return getClass().getClassLoader().getResource(path);
     }
 }
