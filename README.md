@@ -79,4 +79,4 @@ Requests for functions that are general enough to be included in a standard libr
 
 ---
 ## Disclaimer
-I do not take any warranty for the usage of this library, though I intend to maintain this library as well as possible and will respond on to all feedback. Currently the library is getting a complete overhaul.
+I do not take any warranty for the usage of this library, though I intend to maintain this library as well as possible and will respond to every feedback I receive. Currently the library is getting a complete overhaul.
