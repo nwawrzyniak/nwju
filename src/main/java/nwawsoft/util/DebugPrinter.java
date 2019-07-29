@@ -4,7 +4,7 @@ package nwawsoft.util;
  * Used to only create command line output in programs if the DEBUG boolean in this file is set.
  */
 public class DebugPrinter {
-    public static final boolean DEBUG = true;
+    private static final boolean DEBUG = true;
 
     /**
      * Prints which method called this one and prints the passed String if the DEBUG flag is set.
@@ -61,7 +61,7 @@ public class DebugPrinter {
                     System.out.println("DebugPrinter for " + methodPath + "." + methodName + ":");
                 }
                 else if (lineMode == 1) {
-                    System.out.print("DebugPrinter for " + methodPath + "." + methodName + ":" );
+                    System.out.print("DebugPrinter for " + methodPath + "." + methodName + ": " );
                 }
             }
             if (lineMode == 0) {
@@ -118,7 +118,7 @@ public class DebugPrinter {
      * @param lineMode          0 or 1. 0 for line break after print, 1 for no line break.
      */
     public static void dp(final Object classObject, final String printableString, final int lineMode) {
-        debugPrint(classObject, printableString, 0);
+        debugPrint(classObject, printableString, lineMode);
     }
 
     /**
