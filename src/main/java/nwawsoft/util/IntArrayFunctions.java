@@ -13,7 +13,7 @@ public class IntArrayFunctions {
      * @param ints any int array
      * @param mode 0 if values should be printed one line per number, 1 if you want them comma separated.
      */
-    public static void print(int[] ints, int mode) {
+    public static void print(final int[] ints, final int mode) {
         boolean firstRun = true;
         if (ints != null) {
             for (int currentInt : ints) {
@@ -40,7 +40,7 @@ public class IntArrayFunctions {
      * @param b another int array.
      * @return true if no entry was found in both arrays, else false.
      */
-    public static boolean sharesNoEntry(int[] a, int[] b) {
+    public static boolean sharesNoEntry(final int[] a, final int[] b) {
         for (int entryA : a) {
             for (int entryB : b) {
                 if (entryA == entryB) {
@@ -58,16 +58,45 @@ public class IntArrayFunctions {
      * @param b another int array.
      * @return true if a and b have the same contents in the same order, else false.
      */
-    public static boolean isEqual(int[] a, int[] b) {
-        if (a.length == b.length) {
-            for (int i = 0; i < a.length; i++) {
-                if (a[i] != b[i]) {
-                    return false;
+    public static boolean isEqual(final int[] a, final int[] b) {
+        if (a != null && b != null) {
+            if (a.length == b.length) {
+                for (int i = 0; i < a.length; i++) {
+                    if (a[i] != b[i]) {
+                        return false;
+                    }
                 }
+            } else {
+                return false;
+            }
+            return true;
+        } else {
+            throw new IllegalArgumentException("Both integer array a and b must be non-null.");
+        }
+    }
+
+    /**
+     * Multiplies all the values of the specified int array.
+     *
+     * @param ints the int array to multiply the values of.
+     * @return the product of all entries of ints.
+     */
+    public static int multiplyValues(final int[] ints) {
+        int multipliedValue = 1;
+        if (ints != null) {
+            if (ints.length != 0) {
+                for (int anInt : ints) {
+                    multipliedValue *= anInt;
+                    if (multipliedValue == 0) {
+                        return 0;
+                    }
+                }
+            } else {
+                throw new IllegalArgumentException("int[] ints must contain at least one element.");
             }
         } else {
-            return false;
+            throw new IllegalArgumentException("int[] ints must not be null.");
         }
-        return true;
+        return multipliedValue;
     }
 }
