@@ -9,7 +9,7 @@ This is the go-to library to include in any project if you want to start fresh w
 
 ---
 ## Adding this library to your project
-There is an entirety of at least 5 ways to include this library in your project. We will breeze through them quickly.
+There are at least 5 ways to include this library in your project. We will breeze through them quickly.
 ### Method 1) As a ```git submodule```:
 To add the library to your git project as a git submodule into your lib directory, assuming you are in a terminal in your project root, make the following call
 ```
