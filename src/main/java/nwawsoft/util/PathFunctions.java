@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.net.URL;
 
 /**
- * Provides functions for easier work with files, directories and paths.
+ * Provides functions for easier handling of and working with files, directories and paths.
  */
 public class PathFunctions {
     /**
