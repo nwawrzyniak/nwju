@@ -12,7 +12,7 @@ public class HighlyCompositeNumbers {
      *
      * @param upperBound the last number to check
      */
-    public static void printHCN(int upperBound) {
+    public static void printHCN(final int upperBound) {
         printHCN(0, upperBound);
     }
 
@@ -26,7 +26,7 @@ public class HighlyCompositeNumbers {
      * @param lowerBound the number from where to start looking for HCNs
      * @param upperBound the last number to check
      */
-    public static void printHCN(int lowerBound, int upperBound) {
+    public static void printHCN(final int lowerBound, final int upperBound) {
         int maxDivisors = 0;
         int counter = 0;
         for (int i = lowerBound; i < upperBound; i++) {
@@ -61,7 +61,7 @@ public class HighlyCompositeNumbers {
      * @param upperBound the upper bound to check to.
      * @return an int[] with size HCNAmount that contains all HCNs from 1 to upperBound.
      */
-    public static int[] getHCNs(int upperBound) {
+    public static int[] getHCNs(final int upperBound) {
         int[] collectorArray = new int[upperBound];
         int maxDivisors = 0;
         int counter = 0;
@@ -85,7 +85,7 @@ public class HighlyCompositeNumbers {
      * @param candidate the number to check for its divisor amount.
      * @return the amount of divisors the candidate has, including 1 and the candidate itself.
      */
-    private static int getDivisors(int candidate) {
+    private static int getDivisors(final int candidate) {
         int counter = 0;
         for (int i = 1; i <= candidate; i++) {
             if (candidate % i == 0) {
