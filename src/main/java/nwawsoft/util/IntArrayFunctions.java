@@ -71,7 +71,7 @@ public class IntArrayFunctions {
             }
             return true;
         } else {
-            throw new IllegalArgumentException("Both integer array a and b must be non-null.");
+            throw new IllegalArgumentException("Both integer arrays a and b must be non-null.");
         }
     }
 
