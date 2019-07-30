@@ -1,13 +1,14 @@
 package nwawsoft.util;
 
+/**
+ * Supplies functions to generate an int[] of HighlyCompositeNumbers and/or print them.
+ */
 public class HighlyCompositeNumbers {
-
     /**
      * Prints all numbers that have a higher amount of divisors than the numbers before.
      * This function will only print HCNs after reaching the first real HCN in its range.
-     * <p>
-     * Keep in mind that the first few numbers could have a smaller amount of divisors
-     * than a number lower than lowerBound and are therefore not guaranteed to be HCNs.
+     * Keep in mind that the first few numbers could have a smaller amount of divisors than a number lower than
+     * lowerBound and are therefore not guaranteed to be HCNs.
      *
      * @param upperBound the last number to check
      */
@@ -19,9 +20,8 @@ public class HighlyCompositeNumbers {
      * Prints all numbers that have a higher amount of divisors than the numbers before.
      * Only checks numbers between lowerBound and upperBound.
      * This function will only print HCNs after reaching the first real HCN in its range.
-     * <p>
-     * Keep in mind that the first few numbers could have a smaller amount of divisors
-     * than a number lower than lowerBound and are therefore not guaranteed to be HCNs.
+     * Keep in mind that the first few numbers could have a smaller amount of divisors than a number lower than
+     * lowerBound and are therefore not guaranteed to be HCNs.
      *
      * @param lowerBound the number from where to start looking for HCNs
      * @param upperBound the last number to check
@@ -39,7 +39,9 @@ public class HighlyCompositeNumbers {
         }
     }
 
-    /* endless HCN print */
+    /**
+     * Endless HCN print.
+     */
     public static void printHCN() {
         int maxDivisors = 0;
         int counter = 0;
@@ -53,7 +55,12 @@ public class HighlyCompositeNumbers {
         }
     }
 
-    /* return an int array of all HCNs from 1 to upperBound */
+    /**
+     * Returns an int[] with all highly composite numbers from 1 to upperBound.
+     *
+     * @param upperBound the upper bound to check to.
+     * @return an int[] with size HCNAmount that contains all HCNs from 1 to upperBound.
+     */
     public static int[] getHCNs(int upperBound) {
         int[] collectorArray = new int[upperBound];
         int maxDivisors = 0;
@@ -71,7 +78,13 @@ public class HighlyCompositeNumbers {
         return hcnArray;
     }
 
-    /* returns the amount of divisors (including 1 and candidate itself) of candidate */
+    /**
+     * Returns the amount of divisors the candidate has, including 1 and the candidate itself.
+     * For candidate = 1 this will only be 1.
+     *
+     * @param candidate the number to check for its divisor amount.
+     * @return the amount of divisors the candidate has, including 1 and the candidate itself.
+     */
     private static int getDivisors(int candidate) {
         int counter = 0;
         for (int i = 1; i <= candidate; i++) {
