@@ -25,7 +25,17 @@ public class List {
      * @return true, wenn die Liste leer ist, sonst false
      */
     public boolean isEmpty() {
-        return first == tail;
+        return length == 0;
+    }
+
+    /**
+     * Completely empties the list.
+     */
+    public void clear() {
+        this.toFirst();
+        while (this.hasAccess()) {
+            this.remove();
+        }
     }
 
     /**
@@ -185,10 +195,8 @@ public class List {
     }
 
     /**
-     * Die Liste pList wird an die Liste angehaengt. Anschliessend
-     * wird pList eine leere Liste. Das aktuelle Objekt bleibt unveraendert.
-     * Falls pList null oder eine leere Liste ist, bleibt die Liste
-     * unveraendert.
+     * Die Liste pList wird an die Liste angehaengt. Das aktuelle Objekt bleibt unveraendert.
+     * Falls pList null oder eine leere Liste ist, bleibt die Liste unveraendert.
      *
      * @param pList Liste
      */
@@ -214,12 +222,6 @@ public class List {
                 tail = pList.tail;
             }
             length += pList.getLength();
-            // pList wird zur leeren Liste
-            pList.tail = new Node(null); // Dummy
-            pList.first = pList.tail;
-            pList.tail.setNext(tail);
-            pList.current = pList.tail;
-            pList.length = 0;
         }
     }
 
@@ -298,6 +300,42 @@ public class List {
             this.append(temp.top());
             temp.pop();
         }
+        this.toFirst();
+    }
+
+    /**
+     * Prints all entries of the list, one line per entry, using .toString() to get its String representation.
+     */
+    public void print() {
+        this.toFirst();
+        while (this.hasAccess()) {
+            try {
+                System.out.println(this.getObject().toString());
+            } catch (Exception e) {
+                DebugPrinter.dp(this, "Couldn't print " + this.getObject() + "'s String representation. Skipping.");
+            }
+        }
+        this.toFirst();
+    }
+
+    /**
+     * Returns a String with an amount of spaces equal to ((amount of digits in length) - 1) so it can be used for
+     * formatting an index number.
+     *
+     * @return a String containing white spaces.
+     */
+    private String getIndexSpacing() {
+        StringBuilder spaces = new StringBuilder();
+        int spacesAmount = 0;
+        int remainingLength = length / 10;
+        while (remainingLength > 0) {
+            spacesAmount++;
+            remainingLength /= 10;
+        }
+        for (int i = 0; i < spacesAmount; i++) {
+            spaces.append(" ");
+        }
+        return spaces.toString();
     }
 
     /**

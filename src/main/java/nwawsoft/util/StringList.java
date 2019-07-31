@@ -2,8 +2,6 @@ package nwawsoft.util;
 
 /**
  * Works like List but ignores objects except Strings and List objects that are not purely made out of Strings.
- * Whenever the documentation works with the words Object and object make sure to check the capitalization to
- * differentiate between the class that every class extends and any regular object.
  */
 public class StringList extends List {
 
@@ -15,9 +13,9 @@ public class StringList extends List {
     }
 
     /**
-     * Sets the Object where the access pointer is, but only if it is a String.
+     * Sets the Object where the 'current' reference is, but only if it is a String.
      *
-     * @param object an Object to set to the current position of the StringList.
+     * @param object an Object to set to the 'current' reference of the StringList.
      */
     @Override
     public void setObject(Object object) {
@@ -39,7 +37,7 @@ public class StringList extends List {
     }
 
     /**
-     * Inserts the Object in front of where the access pointer is, but only if it is a String.
+     * Inserts the Object in front of where the 'current' reference is, but only if it is a String.
      *
      * @param object an Object to insert into the StringList.
      */
@@ -73,8 +71,9 @@ public class StringList extends List {
     }
 
     /**
-     * Prints the whole StringList one String per line and moves the access pointer to the first entry.
+     * Prints the whole StringList one String per line and moves the 'current' reference to the first entry.
      */
+    @Override
     public void print() {
         super.toFirst();
         while (super.hasAccess()) {
@@ -85,8 +84,8 @@ public class StringList extends List {
     }
 
     /**
-     * Prints the whole StringList with a maximum of outputAmount Strings one String per line and moves the access
-     * pointer to the first entry.
+     * Prints the whole StringList with a maximum of outputAmount Strings one String per line and moves the 'current'
+     * reference to the first entry.
      *
      * @param outputAmount the maximum number of entries to print, starting at the beginning.
      */
@@ -102,8 +101,8 @@ public class StringList extends List {
     }
 
     /**
-     * Prints the rest of the StringList, starting from where the access pointer was, one String per line and moves the
-     * access pointer to the first entry.
+     * Prints the rest of the StringList, starting from where the 'current' reference was, one String per line and
+     * moves the 'current' reference to the first entry.
      */
     public void printHere() {
         while (super.hasAccess()) {
@@ -114,10 +113,10 @@ public class StringList extends List {
     }
 
     /**
-     * Prints the rest of the StringList with a maximum of outputAmount Strings, starting from where the access pointer
-     * was, one String per line and moves the access pointer to the first entry.
+     * Prints the rest of the StringList with a maximum of outputAmount Strings, starting from where the 'current'
+     * reference was, one String per line and moves the 'current' reference to the first entry.
      *
-     * @param outputAmount the maximum number of entries to print, starting where the access pointer is.
+     * @param outputAmount the maximum number of entries to print, starting where the 'current' reference is.
      */
     public void printHere(final int outputAmount) {
         int count = 0;

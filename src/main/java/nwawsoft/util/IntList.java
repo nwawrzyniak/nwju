@@ -1,7 +1,7 @@
 package nwawsoft.util;
 
 /**
- * Works like list but ignores objects except Integers and lists that are not purely made out of
+ * Works like List but ignores objects except Integer objects and List objects that are not purely made out of
  * Integers.
  */
 public class IntList extends List {
@@ -9,6 +9,8 @@ public class IntList extends List {
     public void setObject(Object object) {
         if (object instanceof Integer) {
             super.setObject(object);
+        } else {
+            DebugPrinter.dp(this, "This is not an Integer. It is " + object + ". Ignored.");
         }
     }
 
@@ -16,6 +18,8 @@ public class IntList extends List {
     public void append(Object object) {
         if (object instanceof Integer) {
             super.append(object);
+        } else {
+            DebugPrinter.dp(this, "This is not an Integer. It is " + object + ". Ignored.");
         }
     }
 
@@ -23,6 +27,8 @@ public class IntList extends List {
     public void insert(Object object) {
         if (object instanceof Integer) {
             super.insert(object);
+        } else {
+            DebugPrinter.dp(this, "This is not an Integer. It is " + object + ". Ignored.");
         }
     }
 
@@ -30,7 +36,30 @@ public class IntList extends List {
     public void concat(List pList) {
         if (pList instanceof IntList) {
             super.concat(pList);
+        } else {
+            pList.toFirst();
+            while (pList.hasAccess()) {
+                if (pList.getObject() instanceof Integer) {
+                    this.append(pList.getObject());
+                } else {
+                    DebugPrinter.dp(this, "This is not an Integer. It is " + pList.getObject() + ". Ignored.");
+                }
+                next();
+            }
         }
+    }
+
+    /**
+     * Prints the whole IntList one Integer per line and moves the 'current' reference to the first entry.
+     */
+    @Override
+    public void print() {
+        super.toFirst();
+        while (super.hasAccess()) {
+            System.out.println(super.getObject());
+            super.next();
+        }
+        super.toFirst();
     }
 
     /**
@@ -41,10 +70,21 @@ public class IntList extends List {
      */
     public static int multiplyValues(IntList ints) {
         int product = 1;
-        ints.toFirst();
-        while (ints.hasAccess()) {
-            product *= (Integer) ints.getObject();
-            ints.next();
+        if (ints != null) {
+            ints.toFirst();
+            if (ints.hasAccess()) {
+                while (ints.hasAccess()) {
+                    product *= (Integer) ints.getObject();
+                    ints.next();
+                    if (product == 0) {
+                        return 0;
+                    }
+                }
+            } else {
+                throw new IllegalArgumentException("IntList ints may not be empty.");
+            }
+        } else {
+            throw new IllegalArgumentException("IntList ints may not be null.");
         }
         return product;
     }
