@@ -1,5 +1,8 @@
 package nwawsoft.util;
 
+/**
+ * WIP, not done yet!
+ */
 public class PrimeFactorization {
     /**
      * Tests whether a number has a given divisor.
