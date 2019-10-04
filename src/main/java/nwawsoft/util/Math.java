@@ -1,8 +1,7 @@
 package nwawsoft.util;
 
 /**
- * Provides additional math functions.
- * Also provides functions to work with numerical native data types such as int or double.
+ * Provides additional math functions and functions to work with native numerical data types such as int or double.
  */
 public class Math {
 
@@ -13,20 +12,37 @@ public class Math {
      * @return the corresponding int.
      */
     public static int roundDoubleToInt(final double pDouble) {
-        int y;
-        double decimal = pDouble % 10; // make leading part before decimal point exactly 1 digit long
-        char digitAfterDecimalPoint = Double.toString(decimal).charAt(2);
-        if (digitAfterDecimalPoint <= '4') {
-            y = (int) pDouble;
+        if (pDouble > 0) {
+            if (pDouble % 1 < 0.5) {
+                return (int) pDouble;
+            } else {
+                return (int) pDouble + 1;
+            }
+        } else if (pDouble < 0) {
+            if (pDouble % 1 > -0.5) {
+                return (int) pDouble;
+            } else {
+                return (int) pDouble - 1;
+            }
         } else {
-            y = (int) pDouble + 1;
+            return 0;
         }
-        return y;
+    }
+
+    /**
+     * Wrapper for roundDoubleToInt(double).
+     * Rounds the specified double down (2.001 - 2.499 -> 2) or up (2.5 - 2.999 -> 3) and returns the result as an int.
+     *
+     * @param pDouble the double to round.
+     * @return the corresponding int.
+     */
+    public static int round(final double pDouble) {
+        return roundDoubleToInt(pDouble);
     }
 
     /**
      * Returns the sum of all integer values from 1 to the specified upper bound, including 1 and the upper bound.
-     * If x = 1 this will return 1.
+     * If x = 1 this will return 1. If an error occurs this function returns the value -1.
      *
      * @param x upper bound.
      * @return the sum of all integers from 1 to x.
@@ -46,7 +62,7 @@ public class Math {
 
     /**
      * Returns the sum of all integer values from a specified lower bound to a specified upper bound, including both
-     * bounds. If x = y this will return x.
+     * bounds. If x = y this will return x. If an error occurs this function returns the value -1.
      *
      * @param x lower bound.
      * @param y upper bound.
