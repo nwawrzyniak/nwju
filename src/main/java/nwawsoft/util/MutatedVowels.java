@@ -1,15 +1,43 @@
 package nwawsoft.util;
 
+/**
+ * Contains the Unicode codes of the German mutated vowels. Using these codes in a String over the regular characters
+ * gives your program the possibility to work with different encodings than UTF-8 without the characters turning
+ * jibberish. The Strings of this class should be imported static [e.g. import static nwawsoft.util.MutatedVowels.*;].
+ */
 public class MutatedVowels {
-    public static String aE = "\u00c4";
-    public static String ae = "\u00e4";
-    public static String oE = "\u00d6";
-    public static String oe = "\u00f6";
-    public static String uE = "\u00dc";
-    public static String ue = "\u00fc";
-    public static String ss = "\u00df";
+    /**
+     * Ä
+     */
+    public static final String aE = "\u00c4";
 
-    public static void main(String[] args) {
-        System.out.println(aE + ae + oE + oe + uE + ue + ss);
-    }
+    /**
+     * ä
+     */
+    public static final String ae = "\u00e4";
+
+    /**
+     * Ö
+     */
+    public static final String oE = "\u00d6";
+
+    /**
+     * ö
+     */
+    public static final String oe = "\u00f6";
+
+    /**
+     * Ü
+     */
+    public static final String uE = "\u00dc";
+
+    /**
+     * ü
+     */
+    public static final String ue = "\u00fc";
+
+    /**
+     * ß
+     */
+    public static final String ss = "\u00df";
 }
