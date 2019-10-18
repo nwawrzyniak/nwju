@@ -291,7 +291,7 @@ public class StringFunctions {
      * @param input the String to check
      * @return true if a lower case character was found. Else false.
      */
-    public boolean containsLowerCaseCharacters(final String input) {
+    public static boolean containsLowerCaseCharacters(final String input) {
         char[] inputArray = input.toCharArray();
         for (int i = 0; i < inputArray.length; i++) {
             if (CharFunctions.isLowerCaseLetter(inputArray[i])) {
@@ -307,7 +307,7 @@ public class StringFunctions {
      * @param input the String to check
      * @return true if an upper case character was found. Else false.
      */
-    public boolean containsUpperCaseCharacters(final String input) {
+    public static boolean containsUpperCaseCharacters(final String input) {
         char[] inputArray = input.toCharArray();
         for (int i = 0; i < inputArray.length; i++) {
             if (CharFunctions.isUpperCaseLetter(inputArray[i])) {
@@ -324,7 +324,7 @@ public class StringFunctions {
      * @param input the String to check
      * @return true if a special character was found. Else false.
      */
-    public boolean containsSpecialCharacters(final String input) {
+    public static boolean containsSpecialCharacters(final String input) {
         char[] inputArray = input.toCharArray();
         for (int i = 0; i < inputArray.length; i++) {
             if (CharFunctions.isSpecialCharacter(inputArray[i])) {
@@ -340,7 +340,7 @@ public class StringFunctions {
      * @param input the String to check
      * @return true if a digit was found. Else false.
      */
-    public boolean containsDigits(final String input) {
+    public static boolean containsDigits(final String input) {
         char[] inputArray = input.toCharArray();
         for (int i = 0; i < inputArray.length; i++) {
             if (CharFunctions.isDigit(inputArray[i])) {
