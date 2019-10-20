@@ -9,35 +9,35 @@ public class MutatedVowels {
     /**
      * Ä
      */
-    public static final String aE = "\u00c4";
+    public static final char aE = '\u00c4';
 
     /**
      * ä
      */
-    public static final String ae = "\u00e4";
+    public static final char ae = '\u00e4';
 
     /**
      * Ö
      */
-    public static final String oE = "\u00d6";
+    public static final char oE = '\u00d6';
 
     /**
      * ö
      */
-    public static final String oe = "\u00f6";
+    public static final char oe = '\u00f6';
 
     /**
      * Ü
      */
-    public static final String uE = "\u00dc";
+    public static final char uE = '\u00dc';
 
     /**
      * ü
      */
-    public static final String ue = "\u00fc";
+    public static final char ue = '\u00fc';
 
     /**
      * ß
      */
-    public static final String ss = "\u00df";
+    public static final char ss = '\u00df';
 }
