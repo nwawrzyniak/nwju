@@ -24,15 +24,9 @@ public class StringFunctions {
      * @return the newly cased String.
      */
     public static String toOnlyFirstCharCapital(final String string) {
-        String outputString = string;
-        if (outputString != null && !outputString.equals("")) {
-            outputString = string.toLowerCase();
-            char firstChar = outputString.charAt(0);
-            if (firstChar >= SMALL_A && firstChar <= SMALL_Z) {
-                outputString = ("" + firstChar).toUpperCase() + string.substring(1);
-            }
-            DebugPrinter.dp("Result of toOnlyFirstCharCapital(\"" + string + "\"): \"" +
-                    outputString + "\"");
+        if (string != null && !string.equals("")) {
+            String outputString = string.substring(0,1).toUpperCase() + string.substring(1).toLowerCase();
+            DebugPrinter.dp("Result of toOnlyFirstCharCapital(\"" + string + "\"): \"" + outputString + "\"");
             return outputString;
         }
         DebugPrinter.dp("Result of toOnlyFirstCharCapital(\"" + string + "\"): \"\"");
