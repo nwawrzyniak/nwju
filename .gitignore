@@ -11,6 +11,11 @@ thinkspace/
 *.iml
 ## END OF PERSONAL SPACE
 
+## START OF PROJECT-SPECIFIC ENTRIES ##
+# for ScreenshotRobot:
+data/screenshot.png
+## END OF PROJECT-SPECIFIC ENTRIES ##
+
 ### Eclipse ###
 
 .metadata
