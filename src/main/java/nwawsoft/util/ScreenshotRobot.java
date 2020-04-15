@@ -72,6 +72,27 @@ public class ScreenshotRobot {
     }
 
     /**
+     * Sets area to the specified Rectangle.
+     *
+     * @param area any area within the screen size.
+     */
+    public void setAreaManually(final Rectangle area) {
+        this.area = area;
+    }
+
+    /**
+     * Sets area to the specified position and size.
+     *
+     * @param x the upper left x position of the new screen area.
+     * @param y the upper left y position of the new screen area.
+     * @param width the width of the new screen area.
+     * @param height the height of the new screen area.
+     */
+    public void setAreaManually(final int x, final int y, final int width, final int height) {
+        setAreaManually(new Rectangle(x, y, width, height));
+    }
+
+    /**
      * Creates a BufferedImage of the Rectangle "area" and stores it into "bi".
      */
     public void createBufferedImage() {
