@@ -7,7 +7,7 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * Screenshots all monitors or a specified monitor.
+ * Screenshots all monitors or a specified monitor or area/region.
  */
 public class ScreenshotRobot {
     private GraphicsDevice[] monitors;
@@ -116,5 +116,17 @@ public class ScreenshotRobot {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public GraphicsDevice[] getMonitors() {
+        return monitors;
+    }
+
+    public Rectangle getArea() {
+        return area;
+    }
+
+    public BufferedImage getBI() {
+        return bi;
     }
 }
