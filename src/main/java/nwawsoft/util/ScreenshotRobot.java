@@ -129,4 +129,16 @@ public class ScreenshotRobot {
     public BufferedImage getBI() {
         return bi;
     }
+
+    public void setMonitors(GraphicsDevice[] monitors) {
+        this.monitors = monitors;
+    }
+
+    public void setArea(Rectangle area) {
+        this.area = area;
+    }
+
+    public void setBI(BufferedImage bi) {
+        this.bi = bi;
+    }
 }
