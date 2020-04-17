@@ -104,14 +104,15 @@ public class ScreenshotRobot {
     }
 
     /**
-     * Saves the current content of bi as file "project_root/data/screenshot.png".
+     * Saves the current content of bi into the passed File in .png format.
+	 * It is recommended to save into %project_root%/data to guarantee the directory exists.
      */
     @SuppressWarnings("ResultOfMethodCallIgnored")
-    public void capture() {
+    public void save(final File f) {
         try {
             new File("data/").mkdir();
             if (bi != null) {
-                ImageIO.write(bi, "png", new File("data/screenshot.png"));
+                ImageIO.write(bi, "png", f);
             }
         } catch (IOException e) {
             e.printStackTrace();
