@@ -21,13 +21,6 @@ public class ScreenshotRobot {
         init();
     }
 
-    public static void main(String[] args) {
-        ScreenshotRobot sr = new ScreenshotRobot();
-        sr.configureArea(1);
-        sr.createBufferedImage();
-        sr.save(new File("data/screenshot.png"));
-    }
-
     /**
      * (Re-)Initializes the ScreenshotRobot.
      */
