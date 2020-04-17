@@ -25,7 +25,7 @@ public class ScreenshotRobot {
         ScreenshotRobot sr = new ScreenshotRobot();
         sr.configureArea(1);
         sr.createBufferedImage();
-        sr.save();
+        sr.save(new File("data/screenshot.png"));
     }
 
     /**
