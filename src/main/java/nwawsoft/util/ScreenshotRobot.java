@@ -25,7 +25,7 @@ public class ScreenshotRobot {
         ScreenshotRobot sr = new ScreenshotRobot();
         sr.configureArea(1);
         sr.createBufferedImage();
-        sr.capture();
+        sr.save();
     }
 
     /**
@@ -35,18 +35,6 @@ public class ScreenshotRobot {
         monitors = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices();
         area = new Rectangle(0, 0, 0, 0);
         bi = null;
-    }
-
-    /**
-     * Configures the area of Rectangle "area", stores the content of the specified area into the BufferedImage "bi"
-     * and saves it as file "project_root/data/screenshot.png".
-     *
-     * @param screen 0 for all monitors, else monitor number starting with 1 for main monitor.
-     */
-    public void fullCapture(final int screen) {
-        configureArea(screen);
-        createBufferedImage();
-        capture();
     }
 
     /**
