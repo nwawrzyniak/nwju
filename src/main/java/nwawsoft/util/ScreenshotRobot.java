@@ -87,6 +87,8 @@ public class ScreenshotRobot {
     /**
      * Saves the current content of bi into the passed File in .png format.
 	 * It is recommended to save into %project_root%/data to guarantee the directory exists.
+     *
+     * @param f the fie to store to.
      */
     @SuppressWarnings("ResultOfMethodCallIgnored")
     public void save(final File f) {

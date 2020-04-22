@@ -63,12 +63,12 @@ public class IntList extends List {
     }
 
     /**
-     * // ToDo doc
+     * Multiplies all values of an IntList and returns the result.
      *
-     * @param ints
-     * @return
+     * @param ints any IntList.
+     * @return the product of all values of ints.
      */
-    public static int multiplyValues(IntList ints) {
+    public static int multiplyValues(final IntList ints) {
         int product = 1;
         if (ints != null) {
             ints.toFirst();
@@ -90,12 +90,12 @@ public class IntList extends List {
     }
 
     /**
-     * // ToDo doc
+     * Sums up all values of an IntList and returns the result.
      *
-     * @param ints
-     * @return
+     * @param ints any IntList.
+     * @return the sum of all values of ints.
      */
-    public static int addValues(IntList ints) {
+    public static int addValues(final IntList ints) {
         int sum = 0;
         ints.toFirst();
         while (ints.hasAccess()) {

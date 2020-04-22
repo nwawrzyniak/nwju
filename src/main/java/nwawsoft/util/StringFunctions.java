@@ -104,21 +104,6 @@ public class StringFunctions {
     }
 
     /**
-     * Checks whether
-     * @param pInput
-     * @return
-     */
-    public boolean isOnlyUpperCase(final String pInput) {
-        char[] inputChars = pInput.toCharArray();
-        for (int i = 0; i < inputChars.length; i++) {
-            if (!Character.isUpperCase(inputChars[i])) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    /**
      * Checks whether a String only contains ['a'-'z'] and '_'.
      *
      * @param string the String to check.

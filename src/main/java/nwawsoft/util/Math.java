@@ -6,7 +6,7 @@ package nwawsoft.util;
 public class Math {
 
     /**
-     * Rounds the specified double down (2.001 - 2.499 -> 2) or up (2.5 - 2.999 -> 3) and returns the result as an int.
+     * Rounds the specified double down (2.001 - 2.499 to 2) or up (2.5 - 2.999 to 3) and returns the result as an int.
      *
      * @param pDouble the double to round.
      * @return the corresponding int.
@@ -31,7 +31,7 @@ public class Math {
 
     /**
      * Wrapper for roundDoubleToInt(double).
-     * Rounds the specified double down (2.001 - 2.499 -> 2) or up (2.5 - 2.999 -> 3) and returns the result as an int.
+     * Rounds the specified double down (2.001 - 2.499 to 2) or up (2.5 - 2.999 to 3) and returns the result as an int.
      *
      * @param pDouble the double to round.
      * @return the corresponding int.
