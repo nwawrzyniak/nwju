@@ -7,6 +7,8 @@ Provides a ton of additional functions for native data types (mainly char and St
 
 This is the go-to library to include in any project if you want to start fresh with a lot of tools up your sleeves.
 
+[https://java-util.nwawsoft.com/docs/](https://java-util.nwawsoft.com/docs/)
+
 ---
 ## Adding this library to your project
 There are at least 5 ways to include this library in your project. We will breeze through them quickly.
