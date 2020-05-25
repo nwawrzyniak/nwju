@@ -13,10 +13,7 @@ public class FourTuple {
      * Creates an empty FourTuple. All objects are initialized to null.
      */
     public FourTuple() {
-        object1 = null;
-        object2 = null;
-        object3 = null;
-        object4 = null;
+        this(null, null, null, null);
     }
 
     /**
@@ -27,7 +24,7 @@ public class FourTuple {
      * @param object3 the third object.
      * @param object4 the fourth object.
      */
-    public FourTuple(Object object1, Object object2, Object object3, Object object4) {
+    public FourTuple(final Object object1, final Object object2, final Object object3, final Object object4) {
         this.object1 = object1;
         this.object2 = object2;
         this.object3 = object3;
@@ -38,7 +35,7 @@ public class FourTuple {
         return object1;
     }
 
-    public void setObject1(Object object1) {
+    public void setObject1(final Object object1) {
         this.object1 = object1;
     }
 
@@ -46,7 +43,7 @@ public class FourTuple {
         return object2;
     }
 
-    public void setObject2(Object object2) {
+    public void setObject2(final Object object2) {
         this.object2 = object2;
     }
 
@@ -54,7 +51,7 @@ public class FourTuple {
         return object3;
     }
 
-    public void setObject3(Object object3) {
+    public void setObject3(final Object object3) {
         this.object3 = object3;
     }
 
@@ -62,7 +59,7 @@ public class FourTuple {
         return object4;
     }
 
-    public void setObject4(Object object4) {
+    public void setObject4(final Object object4) {
         this.object4 = object4;
     }
 

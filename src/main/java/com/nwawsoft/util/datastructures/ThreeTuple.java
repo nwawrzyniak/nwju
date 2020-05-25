@@ -12,9 +12,7 @@ public class ThreeTuple {
      * Creates an empty ThreeTuple. All objects are initialized to null.
      */
     public ThreeTuple() {
-        object1 = null;
-        object2 = null;
-        object3 = null;
+        this(null, null, null);
     }
 
     /**
@@ -24,7 +22,7 @@ public class ThreeTuple {
      * @param object2 the second object.
      * @param object3 the third object.
      */
-    public ThreeTuple(Object object1, Object object2, Object object3) {
+    public ThreeTuple(final Object object1, final Object object2, final Object object3) {
         this.object1 = object1;
         this.object2 = object2;
         this.object3 = object3;
@@ -34,7 +32,7 @@ public class ThreeTuple {
         return object1;
     }
 
-    public void setObject1(Object object1) {
+    public void setObject1(final Object object1) {
         this.object1 = object1;
     }
 
@@ -42,7 +40,7 @@ public class ThreeTuple {
         return object2;
     }
 
-    public void setObject2(Object object2) {
+    public void setObject2(final Object object2) {
         this.object2 = object2;
     }
 
@@ -50,7 +48,7 @@ public class ThreeTuple {
         return object3;
     }
 
-    public void setObject3(Object object3) {
+    public void setObject3(final Object object3) {
         this.object3 = object3;
     }
 

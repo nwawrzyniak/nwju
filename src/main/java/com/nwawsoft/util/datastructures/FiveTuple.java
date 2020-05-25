@@ -14,11 +14,7 @@ public class FiveTuple {
      * Creates an empty FiveTuple. All objects are initialized to null.
      */
     public FiveTuple() {
-        object1 = null;
-        object2 = null;
-        object3 = null;
-        object4 = null;
-        object5 = null;
+        this(null, null, null, null, null);
     }
 
     /**
@@ -30,7 +26,8 @@ public class FiveTuple {
      * @param object4 the fourth object.
      * @param object5 the fifth object.
      */
-    public FiveTuple(Object object1, Object object2, Object object3, Object object4, Object object5) {
+    public FiveTuple(final Object object1, final Object object2, final Object object3, final Object object4,
+                     final Object object5) {
         this.object1 = object1;
         this.object2 = object2;
         this.object3 = object3;
@@ -42,7 +39,7 @@ public class FiveTuple {
         return object1;
     }
 
-    public void setObject1(Object object1) {
+    public void setObject1(final Object object1) {
         this.object1 = object1;
     }
 
@@ -50,7 +47,7 @@ public class FiveTuple {
         return object2;
     }
 
-    public void setObject2(Object object2) {
+    public void setObject2(final Object object2) {
         this.object2 = object2;
     }
 
@@ -58,7 +55,7 @@ public class FiveTuple {
         return object3;
     }
 
-    public void setObject3(Object object3) {
+    public void setObject3(final Object object3) {
         this.object3 = object3;
     }
 
@@ -66,7 +63,7 @@ public class FiveTuple {
         return object4;
     }
 
-    public void setObject4(Object object4) {
+    public void setObject4(final Object object4) {
         this.object4 = object4;
     }
 
@@ -74,7 +71,7 @@ public class FiveTuple {
         return object5;
     }
 
-    public void setObject5(Object object5) {
+    public void setObject5(final Object object5) {
         this.object5 = object5;
     }
 

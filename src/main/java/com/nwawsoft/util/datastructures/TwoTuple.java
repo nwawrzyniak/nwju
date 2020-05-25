@@ -11,8 +11,7 @@ public class TwoTuple {
      * Creates an empty TwoTuple. Both objects are initialized to null.
      */
     public TwoTuple() {
-        object1 = null;
-        object2 = null;
+        this(null, null);
     }
 
     /**
@@ -21,7 +20,7 @@ public class TwoTuple {
      * @param object1 the first object.
      * @param object2 the second object.
      */
-    public TwoTuple(Object object1, Object object2) {
+    public TwoTuple(final Object object1, final Object object2) {
         this.object1 = object1;
         this.object2 = object2;
     }
@@ -30,7 +29,7 @@ public class TwoTuple {
         return object1;
     }
 
-    public void setObject1(Object object1) {
+    public void setObject1(final Object object1) {
         this.object1 = object1;
     }
 
@@ -38,7 +37,7 @@ public class TwoTuple {
         return object2;
     }
 
-    public void setObject2(Object object2) {
+    public void setObject2(final Object object2) {
         this.object2 = object2;
     }
 
