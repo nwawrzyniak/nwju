@@ -3,31 +3,28 @@ package com.nwawsoft.util.datastructures;
 import com.nwawsoft.util.tools.DebugPrinter;
 
 /**
- *
+ * List data structure. Can be used with any object or extended for a specific type as in the examples IntList and
+ * StringList.
  */
 public class List {
     private Node first, tail, current;
     private int length;
 
     /**
-     * Eine leere Liste wird erzeugt.
+     * Creates an empty list.
      */
     public List() {
         tail = new Node(null); // Dummy
         first = tail;
         tail.setNext(tail);
-        /* Der next-Zeiger des hinteren Dummy-Elementes
-         * zeigt auf das vorangehende Element.
-         */
         current = first;
         length = 0;
     }
 
     /**
-     * Die Anfrage liefert den Wert true, wenn die Liste
-     * keine Objekte enthaelt, sonst liefert sie den Wert false.
+     * Returns whether the list is empty.
      *
-     * @return true, wenn die Liste leer ist, sonst false
+     * @return true if list is empty. Else false.
      */
     public boolean isEmpty() {
         return length == 0;
@@ -37,53 +34,45 @@ public class List {
      * Completely empties the list.
      */
     public void clear() {
-        this.toFirst();
-        while (this.hasAccess()) {
-            this.remove();
+        toFirst();
+        while (hasAccess()) {
+            remove();
         }
+        length = 0; // technically unneeded since remove() decreases length anyway.
     }
 
     /**
-     * Die Anfrage liefert den Wert true, wenn es ein
-     * aktuelles Objekt gibt, sonst
-     * liefert sie den Wert false.
+     * Returns whether a currently selected object exists.
      *
-     * @return true, falls Zugriff moeglich, sonst false
+     * @return true if a currently selected object exists. Else false.
      */
     public boolean hasAccess() {
-        return (!this.isEmpty()) && (current != tail);
+        return (!isEmpty()) && (current != tail);
     }
 
     /**
-     * Falls die Liste nicht leer ist, es ein aktuelles
-     * Objekt gibt und dieses nicht das letzte Objekt der
-     * Liste ist, wird das dem aktuellen Objekt in der Liste
-     * folgende Objekt zum aktuellen Objekt, andernfalls gibt
-     * es nach Ausfuehrung des Auftrags kein aktuelles Objekt,
-     * d.h. hasAccess() liefert den Wert false.
+     * If the list is not empty, a currently selected object exists and the currently selected object is not the last
+     * element in the list the current pointer moves to the next object. If any of these conditions don't apply there
+     * will not be a currently selected object after execution.
      */
     public void next() {
-        if (this.hasAccess())
+        if (hasAccess())
             current = current.getNext();
     }
 
     /**
-     * Falls die Liste nicht leer ist, wird das erste
-     * Objekt der Liste aktuelles Objekt.
-     * Ist die Liste leer, geschieht nichts.
+     * Moves the currently selected object pointer to the first object of the list.
      */
     public void toFirst() {
-        if (!this.isEmpty())
+        if (!isEmpty())
             current = first;
     }
 
     /**
-     * Falls die Liste nicht leer ist, wird das
-     * letzte Objekt der Liste aktuelles Objekt.
-     * Ist die Liste leer, geschieht nichts.
+     * Moves the currently selected object pointer to the last object of the list.
      */
     public void toLast() {
-        if (!this.isEmpty())
+        if (!isEmpty())
             current = tail.getNext();
     }
 
@@ -96,7 +85,7 @@ public class List {
      * @return Inhaltsobjekt
      */
     public Object getObject() {
-        if (this.hasAccess())
+        if (hasAccess())
             return current.getContent();
         else
             return null;
@@ -110,7 +99,7 @@ public class List {
      * @param pObject Inhaltsobjekt
      */
     public void setObject(final Object pObject) {
-        if (pObject != null && this.hasAccess())
+        if (pObject != null && hasAccess())
             current.setContent(pObject);
     }
 
@@ -130,7 +119,7 @@ public class List {
             lPos0 = current;
             lNewNode = new Node(pObject);
             lNewNode.setNext(tail);
-            if (this.isEmpty())
+            if (isEmpty())
                 first = lNewNode;
             else {
                 Node lPrevious = tail.getNext();
@@ -157,20 +146,20 @@ public class List {
     public void insert(final Object pObject) {
         if (pObject != null) {
             Node lNewNode, lFront, lPos;
-            if (this.isEmpty())
-                this.append(pObject);
-            else if (this.hasAccess()) {
+            if (isEmpty())
+                append(pObject);
+            else if (hasAccess()) {
                 lPos = current;
                 lNewNode = new Node(pObject);
                 lNewNode.setNext(current);
                 if (lPos == first)
                     first = lNewNode;
                 else {
-                    this.toFirst();
+                    toFirst();
                     lFront = current;
-                    while (this.hasAccess() & !(current == lPos)) {
+                    while (hasAccess() & !(current == lPos)) {
                         lFront = current;
-                        this.next();
+                        next();
                     }
                     lFront.setNext(lNewNode);
                 }
@@ -186,14 +175,12 @@ public class List {
      * Objekt ist veraendert sich das aktuelle Objekt nicht.
      */
     public void previous() {
-        Node lFront, lPos;
-        if (this.hasAccess()) {
+        Node lPos;
+        if (hasAccess()) {
             lPos = current;
-            this.toFirst();
-            lFront = current;
-            while (this.hasAccess() & !(current == lPos)) {
-                lFront = current;
-                this.next();
+            toFirst();
+            while (hasAccess() & !(current == lPos)) {
+                next();
             }
             current = lPos;
         }
@@ -208,7 +195,7 @@ public class List {
     public void concat(final List pList) {
         Node lCurrent1, lCurrent2, lPos0;
         if (pList != null && !pList.isEmpty()) {
-            if (this.isEmpty()) {
+            if (isEmpty()) {
                 first = pList.first;
                 tail = pList.tail;
                 current = tail;
@@ -241,7 +228,7 @@ public class List {
      */
     public void remove() {
         Node lPos, lFront;
-        if (this.hasAccess()) {
+        if (hasAccess()) {
             if (current == first) {
                 first = current.getNext();
                 if (current.getNext() == tail)
@@ -249,11 +236,11 @@ public class List {
                 current = first;
             } else {
                 lPos = current;
-                this.toFirst();
+                toFirst();
                 lFront = current;
-                while (this.hasAccess() && !(current == lPos)) {
+                while (hasAccess() && !(current == lPos)) {
                     lFront = current;
-                    this.next();
+                    next();
                 }
                 lFront.setNext(lPos.getNext());
                 current = lFront.getNext();
@@ -273,12 +260,12 @@ public class List {
     @Deprecated
     public int count() {
         int amount = 0;
-        this.toFirst();
-        while (this.hasAccess()) {
+        toFirst();
+        while (hasAccess()) {
             amount++;
-            this.next();
+            next();
         }
-        this.toFirst();
+        toFirst();
         return amount;
     }
 
@@ -296,31 +283,31 @@ public class List {
      */
     public void reverse() {
         Stack temp = new Stack();
-        this.toFirst();
-        while (!this.isEmpty()) {
-            temp.push(this.getObject());
-            this.remove();
+        toFirst();
+        while (!isEmpty()) {
+            temp.push(getObject());
+            remove();
         }
         while (!temp.isEmpty()) {
-            this.append(temp.top());
+            append(temp.top());
             temp.pop();
         }
-        this.toFirst();
+        toFirst();
     }
 
     /**
      * Prints all entries of the list, one line per entry, using .toString() to get its String representation.
      */
     public void print() {
-        this.toFirst();
-        while (this.hasAccess()) {
+        toFirst();
+        while (hasAccess()) {
             try {
-                System.out.println(this.getObject().toString());
+                System.out.println(getObject().toString());
             } catch (Exception e) {
-                DebugPrinter.dp(this, "Couldn't print " + this.getObject() + "'s String representation. Skipping.");
+                DebugPrinter.dp(this, "Couldn't print " + getObject() + "'s String representation. Skipping.");
             }
         }
-        this.toFirst();
+        toFirst();
     }
 
     /**
@@ -350,16 +337,16 @@ public class List {
      * @param c an object of the Class to check the List's content objects against.
      * @return true if all objects are either the specified type or empty, false if any element got a different type.
      */
-    public boolean isTypeOrNull(Class c) {
-        this.toFirst();
-        while (this.hasAccess()) {
-            if (this.getObject() == null || c.isInstance(this.getObject())) {
-                this.next();
+    public boolean isTypeOrNull(final Class c) {
+        toFirst();
+        while (hasAccess()) {
+            if (getObject() == null || c.isInstance(getObject())) {
+                next();
             } else {
                 return false;
             }
         }
-        this.toFirst();
+        toFirst();
         return true;
     }
 
@@ -370,16 +357,16 @@ public class List {
      * @param c an object of the Class to check the List's content objects against.
      * @return true if all objects are of the specified type, false if any element got a different type.
      */
-    public boolean isType(Class c) {
-        this.toFirst();
-        while (this.hasAccess()) {
-            if (c.isInstance(this.getObject())) {
-                this.next();
+    public boolean isType(final Class c) {
+        toFirst();
+        while (hasAccess()) {
+            if (c.isInstance(getObject())) {
+                next();
             } else {
                 return false;
             }
         }
-        this.toFirst();
+        toFirst();
         return true;
     }
 
@@ -392,7 +379,7 @@ public class List {
      * @param b the second List
      * @return true if no match was found. Else false.
      */
-    public static boolean sharesNoEntry(List a, List b) {
+    public static boolean sharesNoEntry(final List a, final List b) {
         boolean foundMatch = false;
         a.toFirst();
         b.toFirst();
@@ -413,13 +400,13 @@ public class List {
 
     /**
      * Checks whether the list has no entry that fits Object.equals() for any object in the specified List.
-     * Note that this has a run-time of O(this.count()*b.count()).
+     * Note that this has a run-time of O(count()*b.count()).
      * The 'current' reference of both List objects gets gets set to their respective first elements.
      *
      * @param l the List to compare to
      * @return true if no match was found. Else false.
      */
-    public boolean sharesNoEntry(List l) {
+    public boolean sharesNoEntry(final List l) {
         return sharesNoEntry(this, l);
     }
 
@@ -427,16 +414,16 @@ public class List {
      * Private class Node.
      * An object of this class can contain up to one Object and can know up to one Node object.
      */
-    private class Node {
+    private static class Node {
         private Object contentObj;
         private Node nextNode;
 
-        public Node(Object pContent) {
+        public Node(final Object pContent) {
             contentObj = pContent;
             nextNode = null;
         }
 
-        public void setContent(Object pContent) {
+        public void setContent(final Object pContent) {
             contentObj = pContent;
         }
 
@@ -448,7 +435,7 @@ public class List {
             return nextNode;
         }
 
-        public void setNext(Node pNext) {
+        public void setNext(final Node pNext) {
             nextNode = pNext;
         }
     }

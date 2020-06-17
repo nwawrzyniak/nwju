@@ -1,8 +1,8 @@
-nwawsoft.util.datastructures
-nwawsoft.util.file
-nwawsoft.util.images
-nwawsoft.util.realworldlanguage
-nwawsoft.util.math
-nwawsoft.util.natives
-nwawsoft.util.tools
-nwawsoft.util.ui
+com.nwawsoft.util.datastructures
+com.nwawsoft.util.file
+com.nwawsoft.util.images
+com.nwawsoft.util.math
+com.nwawsoft.util.natives
+com.nwawsoft.util.realworldlanguage
+com.nwawsoft.util.tools
+com.nwawsoft.util.ui
