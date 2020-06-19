@@ -17,55 +17,55 @@ public class StringList extends List {
     /**
      * Sets the Object where the 'current' reference is, but only if it is a String.
      *
-     * @param object an Object to set to the 'current' reference of the StringList.
+     * @param o an Object to set to the 'current' reference of the StringList.
      */
     @Override
-    public void setObject(Object object) {
-        if (object instanceof String) {
-            super.setObject(object);
+    public void setObject(final Object o) {
+        if (o instanceof String) {
+            super.setObject(o);
         }
     }
 
     /**
      * Appends the Object to the end of the StringList, but only if it is a String.
      *
-     * @param object an Object to append to the StringList.
+     * @param o an Object to append to the StringList.
      */
     @Override
-    public void append(Object object) {
-        if (object instanceof String) {
-            super.append(object);
+    public void append(final Object o) {
+        if (o instanceof String) {
+            super.append(o);
         }
     }
 
     /**
      * Inserts the Object in front of where the 'current' reference is, but only if it is a String.
      *
-     * @param object an Object to insert into the StringList.
+     * @param o an Object to insert into the StringList.
      */
     @Override
-    public void insert(Object object) {
-        if (object instanceof String) {
-            super.insert(object);
+    public void insert(final Object o) {
+        if (o instanceof String) {
+            super.insert(o);
         }
     }
 
     /**
      * Concatenates the specified List to the end of the List making this call. Ignores all non-String values.
      *
-     * @param pList a List whose contents shall be appended to the StringList.
+     * @param l a List whose contents shall be appended to the StringList.
      */
     @Override
-    public void concat(final List pList) {
-        if (pList instanceof StringList) {
-            super.concat(pList);
+    public void concat(final List l) {
+        if (l instanceof StringList) {
+            super.concat(l);
         } else {
-            pList.toFirst();
-            while (pList.hasAccess()) {
-                if (pList.getObject() instanceof String) {
-                    this.append(pList.getObject());
+            l.toFirst();
+            while (l.hasAccess()) {
+                if (l.getObject() instanceof String) {
+                    this.append(l.getObject());
                 } else {
-                    DebugPrinter.dp(this, "This is not a String. It is " + pList.getObject() + ". Ignored.");
+                    DebugPrinter.dp(this, "This is not a String. It is " + l.getObject() + ". Ignored.");
                 }
                 next();
             }

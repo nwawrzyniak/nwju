@@ -77,12 +77,9 @@ public class List {
     }
 
     /**
-     * Falls es ein aktuelles Objekt gibt
-     * (hasAccess() == true), wird das aktuelle Objekt
-     * zurueckgegeben, andernfalls (hasAccess()== false)
-     * gibt die Anfrage den Wert null zurueck.
+     * Returns the content of the currently selected object if a currently selected object exists. Else returns null.
      *
-     * @return Inhaltsobjekt
+     * @return the content of the currently selected object if a currently selected object exists. Else null.
      */
     public Object getObject() {
         if (hasAccess())
@@ -92,32 +89,28 @@ public class List {
     }
 
     /**
-     * Falls es ein aktuelles Objekt gibt (hasAccess() == true)
-     * und pObject ungleich null ist, wird das aktuelle Objekt
-     * durch pObject ersetzt. Sonst bleibt die Liste unveraendert.
+     * Replaces the content of the currently selected object with the specified content if there is any.
+     * If there is none, nothing happens.
      *
-     * @param pObject Inhaltsobjekt
+     * @param o any object.
      */
-    public void setObject(final Object pObject) {
-        if (pObject != null && hasAccess())
-            current.setContent(pObject);
+    public void setObject(final Object o) {
+        if (o != null && hasAccess())
+            current.setContent(o);
     }
 
     /**
-     * Ein neues Objekt pObject wird am Ende der Liste eingefuegt.
-     * Das aktuelle Objekt bleibt unveraendert. Wenn die Liste
-     * leer ist, wird das Objekt pObject in die Liste eingefuegt
-     * und es gibt weiterhin kein aktuelles Objekt
-     * (hasAccess() == false). Falls pObject gleich null ist,
-     * bleibt die Liste unveraendert.
+     * Adds the specified object to the end of the list. The currently selected object remains unchanged.
+     * If the list was empty the object is added and there is still no currently selected object.
+     * If the specified object is null it is not added.
      *
-     * @param pObject Inhaltsobject
+     * @param o any object.
      */
-    public void append(final Object pObject) {
-        if (pObject != null) {
+    public void append(final Object o) {
+        if (o != null) {
             Node lNewNode, lPos0;
             lPos0 = current;
-            lNewNode = new Node(pObject);
+            lNewNode = new Node(o);
             lNewNode.setNext(tail);
             if (isEmpty())
                 first = lNewNode;
@@ -132,25 +125,22 @@ public class List {
     }
 
     /**
-     * Falls es ein aktuelles Objekt gibt (hasAccess() == true),
-     * wird ein neues Objekt vor dem aktuellen Objekt in die
-     * Liste eingefuegt. Das aktuelle Objekt bleibt unveraendert.
-     * Wenn die Liste leer ist, wird pObject in die Liste eingefuegt
-     * und es gibt weiterhin kein aktuelles Objekt
-     * (hasAccess() == false). Falls es kein aktuelles Objekt gibt
-     * (hasAccess() == false) und die Liste nicht leer ist oder
-     * pObject gleich null ist, bleibt die Liste unveraendert.
+     * If there is a currently selected object the specified element is added before it.
+     * The currently selected object remains unchanged.
+     * If the list is empty the specified object is added and there is still no currently selected object.
+     * If there is no currently selected object and the list is non-empty or if the specified object is null nothing
+     * happens.
      *
-     * @param pObject Inhaltsobjekt
+     * @param o any object.
      */
-    public void insert(final Object pObject) {
-        if (pObject != null) {
+    public void insert(final Object o) {
+        if (o != null) {
             Node lNewNode, lFront, lPos;
             if (isEmpty())
-                append(pObject);
+                append(o);
             else if (hasAccess()) {
                 lPos = current;
-                lNewNode = new Node(pObject);
+                lNewNode = new Node(o);
                 lNewNode.setNext(current);
                 if (lPos == first)
                     first = lNewNode;
@@ -170,9 +160,8 @@ public class List {
     }
 
     /**
-     * Wenn es ein aktuellers Objekt gibt wird das vorherige Objekt
-     * zum aktuellen Objekt. Wenn das erste Objekt der Liste aktuelles
-     * Objekt ist veraendert sich das aktuelle Objekt nicht.
+     * If there is a currently selected the previous object becomes the currently selected object.
+     * If the object was the first object of the list or if there is no currently selected object nothing happens.
      */
     public void previous() {
         Node lPos;
@@ -187,44 +176,42 @@ public class List {
     }
 
     /**
-     * Die Liste pList wird an die Liste angehaengt. Das aktuelle Objekt bleibt unveraendert.
-     * Falls pList null oder eine leere Liste ist, bleibt die Liste unveraendert.
+     * Concatenates a specified list to the list.
+     * The currently selected object remains unchanged.
+     * If the specified list is null or empty nothing happens.
      *
-     * @param pList Liste
+     * @param l any list.
      */
-    public void concat(final List pList) {
+    public void concat(final List l) {
         Node lCurrent1, lCurrent2, lPos0;
-        if (pList != null && !pList.isEmpty()) {
+        if (l != null && !l.isEmpty()) {
             if (isEmpty()) {
-                first = pList.first;
-                tail = pList.tail;
+                first = l.first;
+                tail = l.tail;
                 current = tail;
             } else {
                 lPos0 = current;
                 current = tail.getNext();
                 lCurrent1 = current;
-                pList.toFirst();
-                current = pList.current;
-                lCurrent2 = pList.current;
+                l.toFirst();
+                current = l.current;
+                lCurrent2 = l.current;
                 lCurrent1.setNext(lCurrent2);
                 if (lPos0 != tail)
                     current = lPos0;
                 else
-                    current = pList.tail;
-                tail = pList.tail;
+                    current = l.tail;
+                tail = l.tail;
             }
-            length += pList.getLength();
+            length += l.getLength();
         }
     }
 
     /**
-     * Falls es ein aktuelles Objekt gibt (hasAccess() == true),
-     * wird das aktuelle Objekt geloescht und das Objekt hinter
-     * dem geloeschten Objekt wird zum aktuellen Objekt. Wird das
-     * Objekt, das am Ende der Liste steht, geloescht, gibt es kein
-     * aktuelles Objekt mehr (hasAccess() == false). Wenn die Liste
-     * leer ist oder es kein aktuelles Objekt gibt (hasAccess() == false),
-     * bleibt die Liste unveraendert.
+     * If there is a currently selected object it is removed from the list and the object behind it becomes the new
+     * currently selected object.
+     * If the last object of the list gets removed there will no longer be a currently selected object.
+     * If the list is empty or there is no currently selected object nothing happens.
      */
     public void remove() {
         Node lPos, lFront;
@@ -252,10 +239,10 @@ public class List {
     }
 
     /**
-     * Counts the elements in the list. The 'current' reference gets set to the first element of the List.
+     * Counts the elements in the list. The currently selected object gets set to the first object of the List.
      *
-     * @return the amount of elements in the list.
-     * @deprecated use getLength() instead to not move the 'current' reference.
+     * @return the amount of objects in the list.
+     * @deprecated use getLength() instead to not change the currently selected object.
      */
     @Deprecated
     public int count() {
@@ -279,7 +266,7 @@ public class List {
     }
 
     /**
-     * Inverts the list. The new first object becomes current object.
+     * Inverts the list. The new first object becomes the currently selected object.
      */
     public void reverse() {
         Stack temp = new Stack();
@@ -328,6 +315,7 @@ public class List {
             spaces.append(" ");
         }
         return spaces.toString();
+        // ToDo: Consult object index for adaptive length
     }
 
     /**
@@ -373,10 +361,10 @@ public class List {
     /**
      * Checks whether two lists have no entries that fit Object.equals().
      * Note that this has a run-time of O(a.count()*b.count()).
-     * The 'current' reference of both List objects gets gets set to their respective first elements.
+     * The currently selected object of both lists gets gets set to their respective first elements.
      *
-     * @param a the first List
-     * @param b the second List
+     * @param a a first List.
+     * @param b a second List.
      * @return true if no match was found. Else false.
      */
     public static boolean sharesNoEntry(final List a, final List b) {
@@ -401,9 +389,9 @@ public class List {
     /**
      * Checks whether the list has no entry that fits Object.equals() for any object in the specified List.
      * Note that this has a run-time of O(count()*b.count()).
-     * The 'current' reference of both List objects gets gets set to their respective first elements.
+     * The currently selected object of both lists gets gets set to their respective first elements.
      *
-     * @param l the List to compare to
+     * @param l any list.
      * @return true if no match was found. Else false.
      */
     public boolean sharesNoEntry(final List l) {
@@ -415,28 +403,28 @@ public class List {
      * An object of this class can contain up to one Object and can know up to one Node object.
      */
     private static class Node {
-        private Object contentObj;
-        private Node nextNode;
+        private Object content;
+        private Node next;
 
-        public Node(final Object pContent) {
-            contentObj = pContent;
-            nextNode = null;
+        public Node(final Object o) {
+            content = o;
+            next = null;
         }
 
-        public void setContent(final Object pContent) {
-            contentObj = pContent;
+        public void setContent(final Object o) {
+            content = o;
         }
 
         public Object getContent() {
-            return contentObj;
+            return content;
         }
 
         public Node getNext() {
-            return nextNode;
+            return next;
         }
 
-        public void setNext(final Node pNext) {
-            nextNode = pNext;
+        public void setNext(final Node n) {
+            next = n;
         }
     }
 }

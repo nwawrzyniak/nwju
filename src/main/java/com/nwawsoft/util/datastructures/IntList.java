@@ -8,43 +8,43 @@ import com.nwawsoft.util.tools.DebugPrinter;
  */
 public class IntList extends List {
     @Override
-    public void setObject(Object object) {
-        if (object instanceof Integer) {
-            super.setObject(object);
+    public void setObject(final Object o) {
+        if (o instanceof Integer) {
+            super.setObject(o);
         } else {
-            DebugPrinter.dp(this, "This is not an Integer. It is " + object + ". Ignored.");
+            DebugPrinter.dp(this, "This is not an Integer. It is " + o + ". Ignored.");
         }
     }
 
     @Override
-    public void append(Object object) {
-        if (object instanceof Integer) {
-            super.append(object);
+    public void append(final Object o) {
+        if (o instanceof Integer) {
+            super.append(o);
         } else {
-            DebugPrinter.dp(this, "This is not an Integer. It is " + object + ". Ignored.");
+            DebugPrinter.dp(this, "This is not an Integer. It is " + o + ". Ignored.");
         }
     }
 
     @Override
-    public void insert(Object object) {
-        if (object instanceof Integer) {
-            super.insert(object);
+    public void insert(final Object o) {
+        if (o instanceof Integer) {
+            super.insert(o);
         } else {
-            DebugPrinter.dp(this, "This is not an Integer. It is " + object + ". Ignored.");
+            DebugPrinter.dp(this, "This is not an Integer. It is " + o + ". Ignored.");
         }
     }
 
     @Override
-    public void concat(List pList) {
-        if (pList instanceof IntList) {
-            super.concat(pList);
+    public void concat(final List l) {
+        if (l instanceof IntList) {
+            super.concat(l);
         } else {
-            pList.toFirst();
-            while (pList.hasAccess()) {
-                if (pList.getObject() instanceof Integer) {
-                    this.append(pList.getObject());
+            l.toFirst();
+            while (l.hasAccess()) {
+                if (l.getObject() instanceof Integer) {
+                    this.append(l.getObject());
                 } else {
-                    DebugPrinter.dp(this, "This is not an Integer. It is " + pList.getObject() + ". Ignored.");
+                    DebugPrinter.dp(this, "This is not an Integer. It is " + l.getObject() + ". Ignored.");
                 }
                 next();
             }
