@@ -3,8 +3,8 @@ package com.nwawsoft.util.datastructures;
 import com.nwawsoft.util.tools.DebugPrinter;
 
 /**
- * List data structure. Can be used with any object or extended for a specific type as in the examples IntList and
- * StringList.
+ * List data structure.
+ * Can be used with any object or extended for a specific type as in the examples IntList and StringList.
  */
 public class List {
     private Node first, tail, current;
@@ -52,7 +52,8 @@ public class List {
 
     /**
      * If the list is not empty, a currently selected object exists and the currently selected object is not the last
-     * element in the list the current pointer moves to the next object. If any of these conditions don't apply there
+     * element in the list the current pointer moves to the next object.
+     * If any of these conditions don't apply there
      * will not be a currently selected object after execution.
      */
     public void next() {
@@ -77,7 +78,8 @@ public class List {
     }
 
     /**
-     * Returns the content of the currently selected object if a currently selected object exists. Else returns null.
+     * Returns the content of the currently selected object if a currently selected object exists.
+     * Else returns null.
      *
      * @return the content of the currently selected object if a currently selected object exists. Else null.
      */
@@ -100,7 +102,8 @@ public class List {
     }
 
     /**
-     * Adds the specified object to the end of the list. The currently selected object remains unchanged.
+     * Adds the specified object to the end of the list.
+     * The currently selected object remains unchanged.
      * If the list was empty the object is added and there is still no currently selected object.
      * If the specified object is null it is not added.
      *
@@ -160,7 +163,7 @@ public class List {
     }
 
     /**
-     * If there is a currently selected the previous object becomes the currently selected object.
+     * If there is a currently selected object the previous object becomes the currently selected object.
      * If the object was the first object of the list or if there is no currently selected object nothing happens.
      */
     public void previous() {
@@ -239,7 +242,8 @@ public class List {
     }
 
     /**
-     * Counts the elements in the list. The currently selected object gets set to the first object of the List.
+     * Counts the elements in the list.
+     * The currently selected object gets set to the first object of the List.
      *
      * @return the amount of objects in the list.
      * @deprecated use getLength() instead to not change the currently selected object.
@@ -257,7 +261,7 @@ public class List {
     }
 
     /**
-     * Returns the amount of elements in the List.
+     * Returns the amount of elements in the list.
      *
      * @return the amount of elements in the list.
      */
@@ -266,7 +270,8 @@ public class List {
     }
 
     /**
-     * Inverts the list. The new first object becomes the currently selected object.
+     * Inverts the list.
+     * The new first object becomes the currently selected object.
      */
     public void reverse() {
         Stack temp = new Stack();
@@ -319,11 +324,11 @@ public class List {
     }
 
     /**
-     * Sets the access pointer to the start of the list and returns whether its contents are objects of the specified
-     * class or null only.
+     * Returns whether all contents of the list are objects of the specified class or null and sets the currently
+     * selected object to the first object.
      *
-     * @param c an object of the Class to check the List's content objects against.
-     * @return true if all objects are either the specified type or empty, false if any element got a different type.
+     * @param c an object of the Class to check the list's content objects against.
+     * @return true if all objects are either the specified type or null, false if any element got a different type.
      */
     public boolean isTypeOrNull(final Class c) {
         toFirst();
@@ -339,10 +344,10 @@ public class List {
     }
 
     /**
-     * Sets the access pointer to the start of the list and returns whether all its contents are objects of the
-     * specified class.
+     * Returns whether all contents of the list are objects of the specified class and sets the currently selected
+     * object to the first object.
      *
-     * @param c an object of the Class to check the List's content objects against.
+     * @param c an object of the Class to check the list's content objects against.
      * @return true if all objects are of the specified type, false if any element got a different type.
      */
     public boolean isType(final Class c) {
@@ -360,11 +365,12 @@ public class List {
 
     /**
      * Checks whether two lists have no entries that fit Object.equals().
-     * Note that this has a run-time of O(a.count()*b.count()).
      * The currently selected object of both lists gets gets set to their respective first elements.
      *
-     * @param a a first List.
-     * @param b a second List.
+     * Note that this has a run-time of O(a.getLength()*b.getLength()).
+     *
+     * @param a any list.
+     * @param b a second list.
      * @return true if no match was found. Else false.
      */
     public static boolean sharesNoEntry(final List a, final List b) {
@@ -387,9 +393,10 @@ public class List {
     }
 
     /**
-     * Checks whether the list has no entry that fits Object.equals() for any object in the specified List.
-     * Note that this has a run-time of O(count()*b.count()).
+     * Checks whether the list has no entry that fits Object.equals() for any object in the specified list.
      * The currently selected object of both lists gets gets set to their respective first elements.
+     *
+     * Note that this has a run-time of O(length*b.getLength()).
      *
      * @param l any list.
      * @return true if no match was found. Else false.
@@ -399,8 +406,7 @@ public class List {
     }
 
     /**
-     * Private class Node.
-     * An object of this class can contain up to one Object and can know up to one Node object.
+     * Represents a list entry. Every Node may have a content and may know a next Node.
      */
     private static class Node {
         private Object content;

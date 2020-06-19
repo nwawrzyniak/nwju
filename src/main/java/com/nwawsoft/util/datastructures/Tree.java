@@ -3,7 +3,7 @@ package com.nwawsoft.util.datastructures;
 import com.nwawsoft.util.tools.DebugPrinter;
 
 /**
- * Tree data structure that can contain infinitely many 2 additional Trees..
+ * Tree data structure which can contain infinitely many other Trees.
  * Every Tree can be a root itself and can contain one or no 'content' object.
  */
 public class Tree {

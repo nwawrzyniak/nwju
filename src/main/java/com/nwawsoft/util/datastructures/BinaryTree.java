@@ -3,7 +3,7 @@ package com.nwawsoft.util.datastructures;
 import com.nwawsoft.util.tools.DebugPrinter;
 
 /**
- * Tree data structure that can contain up to 2 additional {@code Tree}s.
+ * Tree data structure which can contain up to 2 additional {@code Tree}s.
  * Every {@code BinaryTree} can be a root itself, can contain one or no {@code content} object and none, one or two
  * additional {@code Tree} objects.
  * These can be any {@code Tree} objects and do not have to be {@code BinaryTree} objects.
