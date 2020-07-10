@@ -32,6 +32,23 @@ public class Math {
     }
 
     /**
+     * Returns the amount of divisors the candidate has, including 1 and the candidate itself.
+     * For candidate = 1 this will only be 1.
+     *
+     * @param candidate the number to check for its divisor amount.
+     * @return the amount of divisors the candidate has, including 1 and the candidate itself.
+     */
+    public static int getDivisors(final int candidate) {
+        int counter = 0;
+        for (int i = 1; i <= candidate; i++) {
+            if (candidate % i == 0) {
+                counter++;
+            }
+        }
+        return counter;
+    }
+
+    /**
      * Wrapper for roundDoubleToInt(double).
      * Rounds the specified double down (2.001 - 2.499 to 2) or up (2.5 - 2.999 to 3) and returns the result as an int.
      *

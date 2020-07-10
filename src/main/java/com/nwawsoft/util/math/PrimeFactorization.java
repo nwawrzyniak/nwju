@@ -9,6 +9,8 @@ public class PrimeFactorization {
     /**
      * Tests whether a number has a given divisor.
      *
+     * UNFINISHED!
+     *
      * @param number  the number to test
      * @param divisor the number to divide by
      * @return true if number % divisor = 0

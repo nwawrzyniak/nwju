@@ -1,14 +1,13 @@
 package com.nwawsoft.util.math;
 
+import static com.nwawsoft.util.math.Math.getDivisors;
+
 /**
  * Supplies functions to generate an int[] of highly composite numbers and/or print them.
  */
 public class HighlyCompositeNumbers {
     /**
-     * Prints all numbers that have a higher amount of divisors than the numbers before.
-     * This function will only print HCNs after reaching the first real HCN in its range.
-     * Keep in mind that the first few numbers could have a smaller amount of divisors than a number lower than
-     * lowerBound and are therefore not guaranteed to be HCNs.
+     * Prints all numbers between 0 and upperBound that have a higher amount of divisors than the numbers before.
      *
      * @param upperBound the last number to check
      */
@@ -41,17 +40,20 @@ public class HighlyCompositeNumbers {
 
     /**
      * Endless HCN print.
+     * Has to be manually interrupted.
      */
     public static void printHCN() {
         int maxDivisors = 0;
         int counter = 0;
-        for (int i = 0; true; i++) {
+        int i = 0;
+        while (true) {
             int currentDivisors = getDivisors(i);
             if (currentDivisors > maxDivisors) {
                 counter++;
                 maxDivisors = currentDivisors;
                 System.out.println("HCN number " + counter + ": " + i + " (with " + maxDivisors + " divisors)");
             }
+            i++;
         }
     }
 
@@ -76,22 +78,5 @@ public class HighlyCompositeNumbers {
         int[] hcnArray = new int[counter];
         System.arraycopy(collectorArray, 0, hcnArray, 0, counter);
         return hcnArray;
-    }
-
-    /**
-     * Returns the amount of divisors the candidate has, including 1 and the candidate itself.
-     * For candidate = 1 this will only be 1.
-     *
-     * @param candidate the number to check for its divisor amount.
-     * @return the amount of divisors the candidate has, including 1 and the candidate itself.
-     */
-    private static int getDivisors(final int candidate) {
-        int counter = 0;
-        for (int i = 1; i <= candidate; i++) {
-            if (candidate % i == 0) {
-                counter++;
-            }
-        }
-        return counter;
     }
 }
