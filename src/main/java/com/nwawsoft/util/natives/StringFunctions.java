@@ -1,6 +1,7 @@
 package com.nwawsoft.util.natives;
 
 import com.nwawsoft.util.tools.DebugPrinter;
+import com.nwawsoft.util.datastructures.StringList;
 
 /**
  * Supplies functions for {@code String}s.
