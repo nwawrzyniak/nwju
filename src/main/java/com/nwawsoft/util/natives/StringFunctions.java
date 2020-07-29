@@ -330,4 +330,22 @@ public class StringFunctions {
         }
         return false;
     }
+    
+    /**
+     * Checks whether a String "input" starts with any substring in a specified StringList "matchList".
+     * 
+     * @param input the String to check.
+     * @param matchList the list of possible Strings input could start with.
+     * @return true if input starts with any String in matchList. Else false.
+     */
+    public static boolean startsWithAny(final String input, final StringList matchList) {
+        matchList.toFirst();
+        while (matchList.hasAccess()) {
+            if (input.startsWith((String)matchList.getObject())) {
+                return true;
+            }
+            matchList.next();
+        }
+        return false;
+    }
 }
