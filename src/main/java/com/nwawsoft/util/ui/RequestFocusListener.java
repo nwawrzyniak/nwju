@@ -1,4 +1,4 @@
-package com.nwawsoft.pwng.ui;
+package com.nwawsoft.util.ui;
 
 import javax.swing.*;
 import javax.swing.event.*;
