@@ -12,7 +12,7 @@ public class ProtocolFunctions {
      * @param o the context. To check if a class itself runs from within a '.jar' use 'this'.
      * @return true if o was loaded from a '.jar' file. Else false.
      */
-    public boolean isInJar(final Object o) {
+    public static boolean isInJar(final Object o) {
         return o.getClass().getResource("").getProtocol().equals("jar");
     }
 }
