@@ -87,8 +87,11 @@ public class ResourceLoader {
                 }
                 fileNames = new String[fileNamesList.size()];
                 int counter = 0;
-                for (String fileName : fileNames) {
-                    fileNames[counter] = fileName;
+                for (String fileName : fileNamesList) {
+                    fileNames[counter] = fileName.substring(fileName.lastIndexOf("/") + 1);
+                    if (noFileEnding) {
+                        fileNames[counter] = fileNames[counter].substring(0, fileNames[counter].lastIndexOf("."));
+                    }
                     counter++;
                 }
                 return fileNames;
