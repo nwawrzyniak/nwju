@@ -32,6 +32,51 @@ public class Math {
     }
 
     /**
+     * Calculates x^n.
+     *
+     * @param x any number
+     * @param n any natural, positive number
+     * @return the result of x^n
+     */
+    public static int xToThePowerOfN(int x, int n) {
+        if (n > 0) {
+            return x*(xToThePowerOfN(x, n-1));
+        } else {
+            return 1;
+        }
+    }
+
+    /**
+     * Calculates x^n.
+     *
+     * @param x any number
+     * @param n any natural, positive number
+     * @return the result of x^n
+     */
+    public static float xToThePowerOfN(float x, int n) {
+        if (n > 0) {
+            return x*(xToThePowerOfN(x, n-1));
+        } else {
+            return 1;
+        }
+    }
+
+    /**
+     * Calculates x^n.
+     *
+     * @param x any number
+     * @param n any natural, positive number
+     * @return the result of x^n
+     */
+    public static double xToThePowerOfN(double x, int n) {
+        if (n > 0) {
+            return x*(xToThePowerOfN(x, n-1));
+        } else {
+            return 1;
+        }
+    }
+
+    /**
      * Returns the amount of divisors the candidate has, including 1 and the candidate itself.
      * For candidate = 1 this will only be 1.
      *
