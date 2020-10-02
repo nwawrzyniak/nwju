@@ -20,7 +20,7 @@ public class HTMLTagger {
   }
 
   /**
-   * Surrounds any text with opening and closing HTML tags and the link tag ("<a>").
+   * Surrounds any text with opening and closing HTML tags and the link tag.
    *
    * @param text any sequence of characters. May be the empty String ("").
    * @return the text surrounded by HTML tags.

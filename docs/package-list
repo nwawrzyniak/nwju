@@ -1,6 +1,9 @@
 com.nwawsoft.util.datastructures
+com.nwawsoft.util.exceptions
 com.nwawsoft.util.file
+com.nwawsoft.util.html
 com.nwawsoft.util.images
+com.nwawsoft.util.jar
 com.nwawsoft.util.math
 com.nwawsoft.util.natives
 com.nwawsoft.util.realworldlanguage
