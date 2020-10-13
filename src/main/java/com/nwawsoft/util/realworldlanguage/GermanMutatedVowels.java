@@ -3,9 +3,10 @@ package com.nwawsoft.util.realworldlanguage;
 /**
  * Contains the Unicode codes of the German mutated vowels. Using these codes in a String over the regular characters
  * gives your program the possibility to work with different encodings than UTF-8 without the characters turning
- * jibberish. The Strings of this class should be imported static [e.g. import static nwawsoft.util.language.MutatedVowels.*;].
+ * jibberish. The Strings of this class should be imported static
+ * [e.g. import static nwawsoft.util.realworldlanguage.GermanMutatedVowels.*;].
  */
-public class MutatedVowels {
+public class GermanMutatedVowels {
     /**
      * Ä
      */
