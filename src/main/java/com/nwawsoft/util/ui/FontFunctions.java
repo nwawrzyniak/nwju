@@ -61,4 +61,3 @@ public class FontFunctions {
     return Integer.parseInt(fontString.substring(fontString.lastIndexOf(";") + 1));
   }
 }
-
