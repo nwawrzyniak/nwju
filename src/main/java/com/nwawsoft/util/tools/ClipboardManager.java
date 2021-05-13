@@ -54,7 +54,7 @@ public class ClipboardManager {
      *
      * @param jtc a JTextComponent
      */
-    public void pasteClipboardTo(JTextComponent jtc) {
+    public void pasteClipboardTo(final JTextComponent jtc) {
         Transferable t = Toolkit.getDefaultToolkit().getSystemClipboard().getContents(this);
         if (t == null)
             return;
@@ -70,7 +70,7 @@ public class ClipboardManager {
      *
      * @param tc a TextComponent
      */
-    public void pasteClipboardTo(TextComponent tc) {
+    public void pasteClipboardTo(final TextComponent tc) {
         Transferable t = Toolkit.getDefaultToolkit().getSystemClipboard().getContents(this);
         if (t == null)
             return;
