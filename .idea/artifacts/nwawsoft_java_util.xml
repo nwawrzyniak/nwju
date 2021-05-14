@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="nwawsoft-java-util">
+    <output-path>$PROJECT_DIR$/out/artifacts/nwawsoft_java_util</output-path>
+    <root id="archive" name="nwawsoft-java-util.jar">
+      <element id="module-output" name="nwawsoft-java-util" />
+    </root>
+  </artifact>
+</component>
