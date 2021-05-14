@@ -6,7 +6,7 @@
 
     <groupId>com.nwawsoft.java-util</groupId>
     <version>1.0.0</version>
-    <artifactId>nwawsoft-java-util-{version}</artifactId>
+    <artifactId>nwawsoft-java-util-${project.version}</artifactId>
 
     <build>
         <directory>target</directory>
