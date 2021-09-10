@@ -1,6 +1,5 @@
 package com.nwawsoft.util.tools;
 
-import javafx.scene.control.TextInputControl;
 import javax.swing.text.JTextComponent;
 import java.awt.*;
 import java.awt.datatransfer.*;
@@ -55,7 +54,7 @@ public class ClipboardManager {
      *
      * @param jtc a JTextComponent
      */
-    public void pasteClipboardTo(JTextComponent jtc) {
+    public void pasteClipboardTo(final JTextComponent jtc) {
         Transferable t = Toolkit.getDefaultToolkit().getSystemClipboard().getContents(this);
         if (t == null)
             return;
@@ -71,28 +70,12 @@ public class ClipboardManager {
      *
      * @param tc a TextComponent
      */
-    public void pasteClipboardTo(TextComponent tc) {
+    public void pasteClipboardTo(final TextComponent tc) {
         Transferable t = Toolkit.getDefaultToolkit().getSystemClipboard().getContents(this);
         if (t == null)
             return;
         try {
             tc.setText((String) t.getTransferData(DataFlavor.stringFlavor));
-        } catch (UnsupportedFlavorException | IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * Pastes the content of the system clipboard to the specified TextInputControl.
-     *
-     * @param tic a TextInputControl
-     */
-    public void pasteClipboardTo(TextInputControl tic) {
-        Transferable t = Toolkit.getDefaultToolkit().getSystemClipboard().getContents(this);
-        if (t == null)
-            return;
-        try {
-            tic.setText((String) t.getTransferData(DataFlavor.stringFlavor));
         } catch (UnsupportedFlavorException | IOException e) {
             e.printStackTrace();
         }

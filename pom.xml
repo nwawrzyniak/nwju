@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.nwawsoft.java-util</groupId>
-    <artifactId>nwawsoft-java-util</artifactId>
-    <version>1.5-SNAPSHOT</version>
+    <version>1.0.0</version>
+    <artifactId>nwawsoft-java-util-${project.version}</artifactId>
 
     <build>
         <directory>target</directory>
