@@ -365,7 +365,7 @@ public class List {
 
     /**
      * Checks whether two lists have no entries that fit Object.equals().
-     * The currently selected object of both lists gets gets set to their respective first elements.
+     * The currently selected object of both lists gets set to their respective first elements.
      *
      * Note that this has a run-time of O(a.getLength()*b.getLength()).
      *
@@ -394,7 +394,7 @@ public class List {
 
     /**
      * Checks whether the list has no entry that fits Object.equals() for any object in the specified list.
-     * The currently selected object of both lists gets gets set to their respective first elements.
+     * The currently selected object of both lists gets set to their respective first elements.
      *
      * Note that this has a run-time of O(length*b.getLength()).
      *
