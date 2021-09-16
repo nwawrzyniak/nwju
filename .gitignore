@@ -1,6 +1,7 @@
-.idea/workspace.xml
+.idea/
 material/
 data/screenshot.png
 out/
 target/
 thinkspace/
+nwju.iml
