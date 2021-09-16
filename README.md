@@ -13,7 +13,7 @@ You can find the full JavaDoc [on this site](https://www.nwawsoft.com/nwju/docs/
 ## Adding this library to your project
 There are multiple ways to include this library in your project.
 ### Method 1) Using Maven:
-Add the following two snippets somewhere between the `<project>` and `</project>` tag of your `pom.xml`
+Add the following two snippets somewhere between the `<project>` and `</project>` tag of your `pom.xml`:
 ```
   <repositories>
     <repository>
