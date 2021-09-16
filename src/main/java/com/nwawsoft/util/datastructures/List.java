@@ -320,7 +320,6 @@ public class List {
             spaces.append(" ");
         }
         return spaces.toString();
-        // ToDo: Consult object index for adaptive length
     }
 
     /**
