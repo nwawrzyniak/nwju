@@ -39,7 +39,7 @@ This can be done via `git clone https://github.com/nwawrzyniak/nwju.git` or by [
 
 ---
 ## Improving this library
-Requests for functions that are general enough to be included in a standard library are welcome and should be posted as an [Issue](https://github.com/nwawrzyniak/nwju/issues).
+Requests for functions that are general enough to be included in a standard library are welcome and should be [reported as an Issue](https://github.com/nwawrzyniak/nwju/issues).
 
 ---
 ## Disclaimer
