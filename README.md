@@ -32,7 +32,7 @@ Add the following two snippets somewhere between the `<project>` and `</project>
   </dependencies>
 ```
 ### Method 2) Download the .jar (no automatic updates)
-The newest version can always be found on the [GitHub Releases page](https://github.com/nwawrzyniak/nwju/releases/latest) or [here, as a direct download](https://github.com/nwawrzyniak/nwju/releases/latest/download/nwju.jar).
+The newest version can always be found on the [GitHub Releases page](https://github.com/nwawrzyniak/nwju/releases/latest).
 
 ### Method 3) Build from source
 This can be done via `git clone https://github.com/nwawrzyniak/nwju.git` or by [downloading the source files](https://github.com/nwawrzyniak/nwju/archive/refs/heads/master.zip)
