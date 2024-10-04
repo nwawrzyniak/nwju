@@ -4,3 +4,6 @@ data/screenshot.png
 out/
 target/
 thinkspace/
+.idea/
+*.iml
+
