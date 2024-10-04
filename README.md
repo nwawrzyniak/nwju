@@ -7,7 +7,7 @@ Provides a lot of additional functions for native data types (mainly char and St
 
 ---
 ## Documentation
-You can find the full JavaDoc [on this site](https://www.nwawsoft.com/nwju/docs/).
+You can find the full JavaDoc [on this site](https://nwawsoft.com/nwju/docs/).
 
 ---
 ## Adding this library to your project
