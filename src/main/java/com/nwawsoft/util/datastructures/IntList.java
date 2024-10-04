@@ -3,8 +3,7 @@ package com.nwawsoft.util.datastructures;
 import com.nwawsoft.util.tools.DebugPrinter;
 
 /**
- * Works like {@code List} but ignores objects except {@code Integer} objects and {@code List} objects that are not
- * purely made out of {@code Integer}s.
+ * Works like {@code List} but ignores objects except {@code Integer}.
  */
 public class IntList extends List {
     @Override
@@ -34,6 +33,12 @@ public class IntList extends List {
         }
     }
 
+    /**
+     * Appends all Integers in l to the IntList.
+     * After this, l.hasAccess() will be false.
+     *
+     * @param l any list.
+     */
     @Override
     public void concat(final List l) {
         if (l instanceof IntList) {
@@ -65,6 +70,33 @@ public class IntList extends List {
     }
 
     /**
+     * Returns the value at the current position.
+     *
+     * @return the value at the current position.
+     */
+    public int get() {
+        return (Integer)super.getObject();
+    }
+
+    /**
+     * Alias for get().
+     *
+     * @return the value at the current position.
+     */
+    public int getValue() {
+        return get();
+    }
+
+    /**
+     * Alias for get().
+     *
+     * @return the value at the current position.
+     */
+    public int getContent() {
+        return get();
+    }
+
+    /**
      * Multiplies all values of an IntList and returns the result.
      *
      * @param ints any IntList.
@@ -78,21 +110,16 @@ public class IntList extends List {
                 while (ints.hasAccess()) {
                     product *= (Integer) ints.getObject();
                     ints.next();
-                    if (product == 0) {
-                        return 0;
-                    }
+                    if (product == 0) return 0;
                 }
-            } else {
-                throw new IllegalArgumentException("IntList ints may not be empty.");
-            }
-        } else {
-            throw new IllegalArgumentException("IntList ints may not be null.");
-        }
+            } else throw new IllegalArgumentException("IntList ints may not be empty.");
+        } else throw new IllegalArgumentException("IntList ints may not be null.");
         return product;
     }
 
     /**
      * Sums up all values of an IntList and returns the result.
+     * The
      *
      * @param ints any IntList.
      * @return the sum of all values of ints.
